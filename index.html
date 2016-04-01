@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Customer Functions</h1>
+<form action="customer/addCustomer.html">
+    <input type="submit" value="Add new customer">
+</form>
+<form action="customer/updateCustomer.html">
+    <input type="submit" value="Update customer">
+</form>
+<form action="customer/customerWebservice.php" method="post">
+    Delete Customer:<input type="text" name="username">
+    <input type="submit">
+    <input type="hidden" name="action" value="delete">
+</form>
+
+<hr>
+
+<h1>Store Functions</h1>
+<form action="store/addStore.html">
+    <input type="submit" value="Add new store">
+</form>
+<form action="store/updateStore.html">
+    <input type="submit" value="Update store">
+</form>
+<form action="store/storeWebservice.php" method="post">
+    Delete Store:<input type="text" name="name">
+    <input type="submit">
+    <input type="hidden" name="action" value="delete">
+</form>
+
+<hr>
+
+<h1>Utility Functions</h1>
+<form action="utility/viewTable.php" method="post">
+    View Table:<input type="text" name="table">
+    <input type="submit">
+</form>
+</body>
+</html>
