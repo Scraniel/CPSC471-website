@@ -40,7 +40,14 @@
 <form action="item/addItem.html">
     <input type="submit" value="Add new item">
 </form>
-
+<form action="item/updateItem.html">
+    <input type="submit" value="Update item">
+</form>
+<form action="item/itemWebservice.php" method="post">
+    Delete Item with ID:<input type="text" name="id">
+    <input type="submit">
+    <input type="hidden" name="action" value="delete">
+</form>
 <hr>
 
 <h1>Utility Functions</h1>
