@@ -3,6 +3,10 @@
 include '../utility/databaseConnect.php';
 include 'modifyStore.php';
 
+
+/*
+ * REQUIRES: $name
+ */
 if($_POST["action"] == "delete")
 {
     $name = $_POST["name"];
@@ -17,6 +21,9 @@ if($_POST["action"] == "delete")
     }
 
 }
+/*
+ * REQUIRES: $name, $email, $password
+ */
 else if($_POST["action"] == "add")
 {
     $name = $_POST["name"];
@@ -32,6 +39,10 @@ else if($_POST["action"] == "add")
         echo "Error: ".mysqli_error($con);
     }
 }
+/*
+ * REQUIRES: $name
+ * OPTIONAL: $email, $password
+ */
 else if($_POST["action"] == "update")
 {
     $updating = array();

@@ -6,4 +6,3 @@ if (!$con)
 {
     die("Failed to connect to MySQL: " . mysqli_connect_error());
 }
-echo "Success: A proper connection to MySQL was made!<br>";

@@ -31,7 +31,6 @@
 	function deleteCustomer($con, $username)
 	{
 		$sql = "DELETE FROM CUSTOMER WHERE username='$username'";
-		echo "<br>Query: $sql<br>";
 		$result = mysqli_query($con,$sql);
 		if(mysqli_affected_rows($con) > 0)
 			return true;

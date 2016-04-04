@@ -32,6 +32,9 @@ include 'modifyItem.php';
         echo "<br>";
     }
 
+/*
+ * REQUIRES: $id
+ */
 if($_POST["action"] == "delete")
 {
     $id = $_POST["id"];
@@ -46,6 +49,9 @@ if($_POST["action"] == "delete")
     }
 
 }
+/*
+ * $REQUIRES: $id, $description, $name, $made_in, $fileToUpload
+ */
 else if($_POST["action"] == "add")
 {
     $fileToUpload = $_FILES["fileToUpload"];
@@ -66,6 +72,10 @@ else if($_POST["action"] == "add")
         echo "Error: ".mysqli_error($con);
     }
 }
+/*
+ * REQUIRES: $id
+ * OPTIONAL: $name, $description, $made_in, $fileToUpload
+ */
 else  if($_POST["action"] == "update")
 {
     $updating = array();

@@ -2,6 +2,9 @@
 include '../utility/databaseConnect.php';
 include 'modifyCustomer.php';
 
+/*
+ * REQUIRES: $username
+ */
 if($_POST["action"] == "delete")
 {
     $username = $_POST["username"];
@@ -15,6 +18,9 @@ if($_POST["action"] == "delete")
     }
 
 }
+/*
+ * REQUIRES: $username, $email, $password
+ */
 else if($_POST["action"] == "add")
 {
     $username = $_POST["username"];
@@ -30,6 +36,10 @@ else if($_POST["action"] == "add")
         echo "Error: ".mysqli_error($con);
     }
 }
+/*
+ * REQUIRES: $username
+ * OPTIONAL: $email, $password
+ */
 else if($_POST["action"] == "update")
 {
     $updating = array();
