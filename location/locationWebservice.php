@@ -14,8 +14,6 @@ if($_POST["action"] == "add")
     $open_hours = $_POST["open_hours"];
     $closed_hours = $_POST["closed_hours"];
 
-    var_dump($_POST);
-
     if(addLocation($con, $name, $address, $email, $phone, $open_hours, $closed_hours))
     {
         echo "Successfully added location at $address to the Store '$name'!";
