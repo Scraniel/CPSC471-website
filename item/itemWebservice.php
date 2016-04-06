@@ -114,3 +114,23 @@ else  if($_POST["action"] == "update")
         echo "Error: ".mysqli_error($con);
     }
 }
+/*
+ * REQUIRED: $id, $category
+ * 
+ * TODO: The flow for this is weird. Should be able to add multiple categories when adding the item. Not sure how to do this in HTML.
+ */
+else if($_POST["action"] == "category")
+{
+    $id = $_POST["id"];
+    $category = $_POST["category"];
+    
+    if(addCategory($con, $id, $category))
+    {
+        echo "Successfully added '$category' category to item with ID '$id'!";
+    }
+    else
+    {
+        echo "Error: ".mysqli_error($con);
+    }
+}
+

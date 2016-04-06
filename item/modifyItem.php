@@ -131,4 +131,12 @@
             return false;
     }
 
+    function addCategory($con, $id, $category)
+    {
+        $sql = "INSERT INTO CATEGORY (id, category) VALUES ('$id', '$category')";
+        if (!mysqli_query($con,$sql))
+            return false;
+        else
+            return true;
+    }
 ?>
