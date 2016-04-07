@@ -28,6 +28,9 @@
 <form action="store/updateStore.html">
     <input type="submit" value="Update store">
 </form>
+<form action="store/addItems.php" method="post">
+    Add Items to Store:<input type="text" name="name"><input type="submit">
+</form>
 <form action="store/storeWebservice.php" method="post">
     Delete Store:<input type="text" name="name">
     <input type="submit">
@@ -58,6 +61,10 @@
 </form>
 <form action="item/addCategory.php">
     <input type="submit" value="Add Category">
+</form>
+<form action="item/removeCategory.php" method="post">
+    Remove a category from item with ID:<input type="number" name="id">
+    <input type="submit" value="submit">
 </form>
 <form action="item/itemWebservice.php" method="post">
     Delete Item with ID:<input type="text" name="id">

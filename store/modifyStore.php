@@ -47,3 +47,12 @@
         else
             return true;
     }
+
+    function addItems($con, $name, $address, $id, $num_in_stock, $price)
+    {
+        $sql = "INSERT INTO CONTAINS (id, address, name, num_in_stock, price) VALUES ('$id','$address','$name','$num_in_stock', '$price')";
+        if (!mysqli_query($con,$sql))
+            return false;
+        else
+            return true;
+    }

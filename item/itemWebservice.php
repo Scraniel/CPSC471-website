@@ -133,4 +133,18 @@ else if($_POST["action"] == "category")
         echo "Error: ".mysqli_error($con);
     }
 }
+else if($_POST["action"] == "deleteCategory")
+{
+    $id = $_POST["id"];
+    $category = $_POST["category"];
+
+    if(deleteCategory($con, $id, $category))
+    {
+        echo "Removed category '$category' from item with ID '$id' successfully!";
+    }
+    else
+    {
+        echo "Error: " . mysqli_error($con);
+    }
+}
 

@@ -62,5 +62,23 @@ else if($_POST["action"] == "update")
         echo "Error: ".mysqli_error($con);
     }
 }
+else if($_POST["action"] == "items")
+{
+    $name = $_POST["name"];
+    $address = $_POST["address"];
+    $id = $_POST["id"];
+    $num_in_stock = $_POST["num_in_stock"];
+    $price = $_POST["price"];
+
+    if(addItems($con, $name, $address, $id, $num_in_stock, $price))
+    {
+        echo "Successfully added item with ID '$id' to store '$name'!";
+    }
+    else
+    {
+        echo "Error: ".mysqli_error($con);
+    }
+}
+
 
 mysqli_close($con);

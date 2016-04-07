@@ -139,4 +139,15 @@
         else
             return true;
     }
+
+    function deleteCategory($con, $id, $category)
+    {
+        $sql = "DELETE FROM CATEGORY WHERE id='$id' AND category='$category'";
+        mysqli_query($con,$sql);
+        if(mysqli_affected_rows($con) < 0)
+            return false;
+        else
+            return true;
+    }
+
 ?>
