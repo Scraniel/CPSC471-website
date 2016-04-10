@@ -72,13 +72,35 @@ else if($_POST["action"] == "items")
 
     if(addItems($con, $name, $address, $id, $num_in_stock, $price))
     {
-        echo "Successfully added item with ID '$id' to store '$name'!";
+        echo "Successfully added item with ID '$id' to store '$name's' location at $address!";
     }
     else
     {
         echo "Error: ".mysqli_error($con);
     }
 }
+else if($_POST["action"] == "updateItems")
+{
+    $updating = array();
+    $id = $_POST["id"];
+    $address = $_POST["address"];
+    $name = $_POST["name"];
+
+    if(!empty($_POST["num_in_stock"]))
+        $updating["num_in_stock"] = $_POST["num_in_stock"];
+    if(!empty($_POST["price"]))
+        $updating["price"] = $_POST["price"];
+
+    if(updateItems($con, $id, $address, $name, $updating))
+    {
+        echo "Successfully updated item with ID '$id' in store '$name's' location at $address!";
+    }
+    else
+    {
+        echo "Error: ".mysqli_error($con);
+    }
+}
+
 
 
 mysqli_close($con);
