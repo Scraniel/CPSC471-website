@@ -148,3 +148,4 @@ else if($_POST["action"] == "deleteCategory")
     }
 }
 
+mysqli_close($con);

@@ -18,7 +18,22 @@
     <input type="submit">
     <input type="hidden" name="action" value="delete">
 </form>
-
+<form action="customer/customerWebservice.php" method="post">
+    Subscribe to store: Username:<input type="text" name="username">
+    Store name:<input type="text" name="name">
+    Email notifications? <input type="checkbox" name="emailNotifications" value="true">
+    <input type="hidden" name = "action" value="subscribe"><input type="submit">
+</form>
+<form action="customer/customerWebservice.php" method="post">
+    Toggle email notifications: Username:<input type="text" name="username">
+    Store name subscribed to:<input type="text" name="name">
+    <input type="hidden" name = "action" value="toggleNotifications"><input type="submit">
+</form>
+<form action="customer/customerWebservice.php" method="post">
+    Unsubscribe from store: Username:<input type="text" name="username">
+    Store name subscribed to:<input type="text" name="name">
+    <input type="hidden" name = "action" value="unsubscribe"><input type="submit">
+</form>
 <hr>
 
 <h1>Store Functions</h1>

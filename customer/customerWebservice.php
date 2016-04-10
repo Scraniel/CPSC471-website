@@ -59,5 +59,51 @@ else if($_POST["action"] == "update")
         echo "Error: ".mysqli_error($con);
     }
 }
+else if($_POST["action"] == "subscribe")
+{
+    $username = $_POST["username"];
+    $name = $_POST["name"];
+    $emailNotifications = !empty($_POST["emailNotifications"]) ? true : false;
+
+    if(addSubscription($con, $username, $name, $emailNotifications))
+    {
+        echo "Successfully subscribed '$username' to '$name'!";
+    }
+    else
+    {
+        echo "Error: ".mysqli_error($con);
+    }
+
+}
+else if($_POST["action"] == "unsubscribe")
+{
+    $username = $_POST["username"];
+    $name = $_POST["name"];
+
+    if(deleteSubscription($con, $username, $name))
+    {
+        echo "Successfully unsubscribed '$username' from '$name'!";
+    }
+    else
+    {
+        echo "Error: ".mysqli_error($con);
+    }
+}
+else if($_POST["action"] == "toggleNotifications")
+{
+    $username = $_POST["username"];
+    $name = $_POST["name"];
+
+    if(toggleNotifications($con, $username, $name))
+    {
+        echo "Successfully turned off email notifications from '$name' for '$username'!";
+    }
+    else
+    {
+        echo "Error: ".mysqli_error($con);
+    }
+}
+
+
 
 mysqli_close($con);

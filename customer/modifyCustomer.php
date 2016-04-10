@@ -47,3 +47,45 @@
 		else
 			return true;
 	}
+
+	function addSubscription($con, $username, $name, $emailNotifications)
+	{
+		$sql = "INSERT INTO SUBSCRIBES_TO (username, name, email_notifications) VALUES ('$username', '$name', '$emailNotifications')";
+
+		if (!mysqli_query($con,$sql))
+			return false;
+		else
+			return true;
+	}
+
+	function deleteSubscription($con, $username, $name)
+	{
+		$sql = "DELETE FROM SUBSCRIBES_TO WHERE username='$username' AND name='$name'";
+		$result = mysqli_query($con,$sql);
+		if(mysqli_affected_rows($con) > 0)
+			return true;
+		else
+			return false;
+	}
+
+	function toggleNotifications($con, $username, $name)
+	{
+		$sql = "SELECT * FROM SUBSCRIBES_TO WHERE name='$name' AND username='$username' ";
+		$result = mysqli_query($con, $sql);
+		if(!$result)
+		{
+			return false;
+		}
+
+		$row = mysqli_fetch_array($result);
+		$newValue = $row["email_notifications"] == 1 ? 0 : 1;
+
+
+		$sql = "UPDATE SUBSCRIBES_TO SET email_notifications='$newValue' WHERE username='$username' AND name='$name'";
+
+		$result = mysqli_query($con, $sql);
+		if(!$result)
+			return false;
+		else
+			return true;
+	}

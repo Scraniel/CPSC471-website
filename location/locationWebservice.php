@@ -67,3 +67,5 @@ else if($_POST["action"] == "update")
         echo "Error: ".mysqli_error($con);
     }
 }
+
+mysqli_close($con);
