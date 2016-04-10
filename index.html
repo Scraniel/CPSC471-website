@@ -56,12 +56,13 @@
     </fieldset>
 
 </form>
-<form action="customer/addReservation.php" method="post">
+<form action="customer/customerWebservice.php" method="post">
     <fieldset>
         Cancel reservation: Username:<input type="text" name="username">
         Store reserved from:<input type="text" name="name">
         Address of location:<input type="text" name="address">
         Item ID:<input type="number" name="id">
+        <input type="hidden" name="action" value="cancelReservation">
         <input type="submit">
     </fieldset>
 
