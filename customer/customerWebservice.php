@@ -103,6 +103,39 @@ else if($_POST["action"] == "toggleNotifications")
         echo "Error: ".mysqli_error($con);
     }
 }
+else if($_POST["action"] == "reserve")
+{
+    $username = $_POST["username"];
+    $id = $_POST["id"];
+    $address = $_POST["address"];
+    $name = $_POST["name"];
+    $quantity = $_POST["quantity"];
+
+    if(reserveItem($con, $username, $id, $address, $name, $quantity))
+    {
+        echo "Successfully reserved item with ID '$id' from the '$address' location of '$name'!";
+    }
+    else
+    {
+        echo "Error: ".mysqli_error($con);
+    }
+}
+else if($_POST["action"] == "cancelReservation")
+{
+    $username = $_POST["username"];
+    $id = $_POST["id"];
+    $address = $_POST["address"];
+    $name = $_POST["name"];
+
+    if(cancelReservation($con, $username, $id, $address, $name))
+    {
+        echo "Successfully cancelled reservation of item with ID '$id' from the '$address' location of '$name'!";
+    }
+    else
+    {
+        echo "Error: ".mysqli_error($con);
+    }
+}
 
 
 

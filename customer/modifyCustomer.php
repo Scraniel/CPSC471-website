@@ -89,3 +89,25 @@
 		else
 			return true;
 	}
+
+	function reserveItem($con, $username, $id, $address, $name, $quantity, $date_reserved = null, $date_picked_up = null)
+    {
+        if($date_reserved == null)
+            $date_reserved = date("Y-m-d H:i:s");
+        
+        $sql = "INSERT INTO RESERVES (username, id, address, name, quantity, date_reserved, date_picked_up) VALUES ('$username', '$id', '$address', '$name', '$quantity', '$date_reserved', '$date_picked_up')";
+        if(!mysqli_query($con, $sql))
+            return false;
+        else
+            return true;
+    }
+
+    function cancelReservation($con, $username, $id, $address, $name)
+    {
+        $sql = "DELETE FROM RESERVES WHERE name='$name' AND username='$username' AND id='$id' AND address='$address'";
+        $result = mysqli_query($con,$sql);
+        if(mysqli_affected_rows($con) > 0)
+            return true;
+        else
+            return false;
+    }
