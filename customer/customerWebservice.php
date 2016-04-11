@@ -1,4 +1,9 @@
 <?php
+// Start the session
+session_start();
+?>
+
+<?php
 include '../utility/databaseConnect.php';
 include 'modifyCustomer.php';
 
@@ -29,7 +34,11 @@ else if($_POST["action"] == "add")
 
     if(addCustomer($con, $username, $email, $password))
     {
-        echo "Successfully added user '$username'!";
+        echo "<script> alert(\"Thank you for registering, $username! Press OK to continue\") </script>";
+        $_SESSION["username"] = $username;
+        
+        echo "<script> location.href = \"../homepage.php\"; </script>";
+        
     }
     else
     {
@@ -37,13 +46,13 @@ else if($_POST["action"] == "add")
     }
 }
 /*
- * REQUIRES: $username
+ * REQUIRES: $username from session
  * OPTIONAL: $email, $password
  */
 else if($_POST["action"] == "update")
 {
     $updating = array();
-    $username = $_POST["username"];
+    $username = $_SESSION["username"];
 
     if(!empty($_POST["email"]))
         $updating["email"] =  $_POST["email"];
@@ -52,7 +61,8 @@ else if($_POST["action"] == "update")
 
     if(updateCustomer($con, $username, $updating))
     {
-        echo "Successfully updated user '$username'!";
+        echo "<script> alert(\"Info changed! Press OK to continue\") </script>";
+        echo "<script> location.href = \"../homepage.php\"; </script>";
     }
     else
     {

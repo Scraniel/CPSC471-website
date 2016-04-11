@@ -1,3 +1,4 @@
+
 <?php
 	// Updates a customer in the database. Returns false
 	// if the update failed.
