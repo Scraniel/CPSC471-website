@@ -79,7 +79,7 @@
 <footer>
     <div class="container_12">
         <div class="grid_2">
-            <div class="copy"> <a href="index.html" class="footer_logo"><img src="images/footer_logo.png"	alt=""></a> &copy; 2016 <a href="#">Privacy Policy</a> </div>
+            <div class="copy"> <a href="index.php" class="footer_logo"><img src="images/footer_logo.png"	alt=""></a> &copy; 2016 <a href="#">Privacy Policy</a> </div>
         </div>
         <div class="grid_2">
             <ul>

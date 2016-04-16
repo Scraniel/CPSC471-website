@@ -38,7 +38,7 @@
 
     <br>
     
-    <a href ='index.html'>CLICK ME TO GO BACK TO DATABASE </a>
+    <a href ='index.php'>CLICK ME TO GO BACK TO DATABASE </a>
     
     <br>
     <?php
