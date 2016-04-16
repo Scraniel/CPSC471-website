@@ -80,6 +80,74 @@
                          <!--   <a href="#" class="btn" data-type="submit">Submit</a></label>-->
                               <button> Submit </button></label>
                         </form>
+                    <br><br>
+                        <h3>Current subscriptions</h3> 
+                            <?php  include 'utility/databaseConnect.php';
+                            $username = $_SESSION['username'];
+                            $sql = "SELECT st.name
+                                    FROM SUBSCRIBES_TO as st
+                                    WHERE st.username = '$username'";
+                            $result = mysqli_query($con,$sql);
+                            
+                            if(!$result)
+                            {
+                                echo "Query: $sql<br>";
+                                var_dump($_POST);
+                                die("Error: ".mysqli_error($con));
+                            }
+                            echo "<table>";
+                            while ($row = mysqli_fetch_array($result)) {
+                                echo '<tr>';
+                                foreach($row as $field => $value) {
+                                    if(!is_int($field))
+                                    {
+                                            echo "$value";
+                                    }
+                                }
+                                echo "<br>";
+                                echo '</tr>';
+                            }
+                            echo "</table>";
+                          
+                            $sqlSub = "SELECT s.name
+                                    FROM STORE as s
+                                    WHERE s.name NOT IN ($sql)";
+                            $resultSub = mysqli_query($con, $sqlSub);
+
+                            echo "<form action=\"customer/customerWebservice.php\" method=\"post\">";
+                            echo "<h3>New subscription:</h3> <select name='name'>";
+                            while ($row = mysqli_fetch_array($resultSub)){
+                                echo "<option value='" . addslashes($row["name"]) . "'>" . $row["name"] . "</option>";
+                            }
+                            echo "</select><br>";
+                            ?>
+                        
+                            Email notifications? <input type="checkbox" name="emailNotifications" value="true"><br>
+                            <input type="hidden" name = "action" value="subscribe">
+                            <input type="submit" value="Subscribe">
+                            </form>
+                            
+                            <?php
+                            
+                            $sqlDel = "SELECT name
+                                    FROM SUBSCRIBES_TO
+                                    WHERE username = '$username'";
+                            $resultDel = mysqli_query($con, $sqlDel);
+
+                            echo "<form action=\"customer/customerWebservice.php\" method=\"post\">";
+                            echo "<h3>Remove Subscription:</h3> <select name='name'>";
+                            while ($row = mysqli_fetch_array($resultDel)){
+                                echo "<option value='" . addslashes($row["name"]) . "'>" . $row["name"] . "</option>";
+                            }
+                            echo "</select><br>";
+                            ?>
+                        
+                            
+                            <input type="hidden" name = "action" value="unsubscribe">
+                            <input type="submit" value="Unsubscribe">
+                            </form>
+                            
+                            
                 <?php
                 }
                 else if (isset($_SESSION["storename"]))
