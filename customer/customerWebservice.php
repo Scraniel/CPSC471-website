@@ -36,8 +36,9 @@ else if($_POST["action"] == "add")
     {
         echo "<script> alert(\"Thank you for registering, $username! Press OK to continue\") </script>";
         $_SESSION["username"] = $username;
-        
-        echo "<script> location.href = \"../homepage.php\"; </script>";
+        // same thing... check whether they are customer or store
+        // echo "<script> location.href = \"../homeLoggedInStore.php\"; </script>";
+        echo "<script> location.href = \"../homeLoggedInCustomer.php\"; </script>";
         
     }
     else

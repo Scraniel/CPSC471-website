@@ -16,6 +16,7 @@
     else
     {
         echo "Logged in as: " .$_SESSION['username'];
+        echo "<script> alert(\"Logged in as: \"); </script>";
         ?>
         <br>
         <a href ='customer/updateCustomer.html'>Manage my account</a> <br>
