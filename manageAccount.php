@@ -38,15 +38,15 @@
                 <div class="autor"> <a href="customer/logout.php">Logout</a> </div>
                 <nav class="">
                     <ul class="sf-menu">
-                        <li class="current"><a href="index.php">Home</a></li>
-                        <li class="with_ul"><a href="#">Stores</a></li>
-                        <li><a href="#">Products</a>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="storesGeneral.php">Stores</a></li>
+                        <li class="with_ul"><a href="productsGeneral.html">Products</a>
                             <ul>
-                                <li><a href="#">Sort By</a>
+                                <li><a href="productsGeneral.html">Sort By</a>
                                     <ul>
-                                        <li><a href="#">Alphabetical</a></li>
-                                        <li><a href="#">Category</a></li>
-                                        <li><a href="#">Store</a></li>
+                                        <li><a href="productsGeneral.html">Alphabetical</a></li>
+                                        <li><a href="productsGeneral.html">Category</a></li>
+                                        <li><a href="productsGeneral.html">Store</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -96,20 +96,6 @@
                     <?php
                 }
             ?>
-            <script>
-                function validateForm() {
-                    var username = document.forms["login"]["username"].value;
-                    var password = document.forms["login"]["hashed_pass"].value;
-                    if (username == null || username.replace(/^\s+/, '').replace(/\s+$/, '') == "") {
-                        alert("Name must be filled out");
-                        return false;
-                    }
-                    else if (password == null || password ==""){
-                        alert("Password must be filled out");
-                        return false;
-                    }
-                }
-            </script>
         </div>
       </div>
       <div class="grid_4">

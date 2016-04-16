@@ -35,7 +35,7 @@
                 <nav class="">
                     <ul class="sf-menu">
                         <li class="current"><a href="index.php">Home</a></li>
-                        <li class="with_ul"><a href="storesGeneral.html">Stores</a></li>
+                        <li class="with_ul"><a href="storesGeneral.php">Stores</a></li>
                         <li><a href="productsGeneral.html">Products</a>
                             <ul>
                                 <li><a href="productsGeneral.html">Sort By</a>

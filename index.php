@@ -73,7 +73,7 @@ $(window).load(
 <header>
   <div class="container_12">
     <div class="grid_12">
-      <div class="h_phone">Need Help? Call Us +1 (800) 123-4567</div>
+      <div class="h_phone">Need help? Call Us +1 (800) 123-4567</div>
       <h1><a href="index.php"><img src="images/logo.png" alt=""></a></h1>
       <div class="clear"></div>
     </div>
@@ -100,7 +100,7 @@ $(window).load(
         <nav class="">
           <ul class="sf-menu">
             <li class="current"><a href="index.php">Home</a></li>
-            <li class="with_ul"><a href="storesGeneral.html">Stores</a></li>
+            <li class="with_ul"><a href="storesGeneral.php">Stores</a></li>
             <li><a href="productsGeneral.html">Products</a>
               <ul>
                 <li><a href="productsGeneral.html">Sort By</a>

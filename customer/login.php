@@ -45,9 +45,7 @@ if ($count == 1) {
     $_SESSION['username'] = $username;
 
     echo "<script> alert(\"$username logged in successfully as customer! Press OK to continue\") </script>";
-
-    // check if user logged in is a customer or a store and redirect accordingly
-    //echo "<script> location.href = \"../homeLoggedInCustomer.php\"; </script>";
+    
     echo "<script> location.href = \"../homeLoggedInCustomer.php\"; </script>";
     //header("location:companion-finder.php"); // Redirect page upon successful authentication
 }
