@@ -1,4 +1,0 @@
-AuthName "Project"
-AuthUserFile "/home/manorievachon/.htpasswds/public_html/passwd"
-AuthType Basic
-require valid-user
