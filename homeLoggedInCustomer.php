@@ -31,6 +31,7 @@
         <div class="container_12">
             <div class="grid_12">
                 <!-- <div class="socials"><a href="#"></a><a href="#"></a></div>-->
+                <div class="autor"> <a href="customer/logout.php">Logout</a> <a href="/manageAccount.php">Manage my account</a> </div>
                 <nav class="">
                     <ul class="sf-menu">
                         <li class="current"><a href="index.php">Home</a></li>
