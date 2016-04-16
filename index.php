@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +74,7 @@ $(window).load(
   <div class="container_12">
     <div class="grid_12">
       <div class="h_phone">Need Help? Call Us +1 (800) 123-4567</div>
-      <h1><a href="index.html"><img src="images/logo.png" alt=""></a></h1>
+      <h1><a href="index.php"><img src="images/logo.png" alt=""></a></h1>
       <div class="clear"></div>
     </div>
     <div class="clear"></div>
@@ -79,11 +83,23 @@ $(window).load(
     <div class="container_12">
       <div class="grid_12">
        <!-- <div class="socials"><a href="#"></a><a href="#"></a></div>-->
-        <div class="autor"> 
-            <a href="login.html">Login</a> <a href="createAccount.html">Create account</a> </div>
+        <?php
+            if(!isset($_SESSION["username"])&&!isset($_SESSION['storename']))
+            {   
+                ?>
+                <div class="autor"> <a href="login.html">Login</a> <a href="createAccount.html">Create account</a> </div>
+                <?php
+            }
+            else
+            {
+                ?>
+                <div class="autor"> <a href="customer/logout.php">Logout</a> <a href="manageAccount.php">Manage my account</a> </div>
+                <?php
+            }
+        ?>
         <nav class="">
           <ul class="sf-menu">
-            <li class="current"><a href="index.html">Home</a></li>
+            <li class="current"><a href="index.php">Home</a></li>
             <li class="with_ul"><a href="storesGeneral.html">Stores</a></li>
             <li><a href="productsGeneral.html">Products</a>
               <ul>

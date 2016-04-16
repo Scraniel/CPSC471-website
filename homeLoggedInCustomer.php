@@ -22,7 +22,7 @@
   <div class="container_12">
     <div class="grid_12">
       <div class="h_phone">Need Help? Call Us +1 (800) 123 4567</div>
-      <h1><a href="index.html"><img src="images/logo.png" alt=""></a> </h1>
+      <h1><a href="index.php"><img src="images/logo.png" alt=""></a> </h1>
       <div class="clear"></div>
     </div>
     <div class="clear"></div>
@@ -31,10 +31,9 @@
         <div class="container_12">
             <div class="grid_12">
                 <!-- <div class="socials"><a href="#"></a><a href="#"></a></div>-->
-                <div class="autor"> <a href="customer/logout.php">Logout</a> <a href="createAccount.html">Create account</a> </div>
                 <nav class="">
                     <ul class="sf-menu">
-                        <li class="current"><a href="index.html">Home</a></li>
+                        <li class="current"><a href="index.php">Home</a></li>
                         <li class="with_ul"><a href="storesGeneral.html">Stores</a></li>
                         <li><a href="productsGeneral.html">Products</a>
                             <ul>
@@ -79,7 +78,7 @@
 <footer>
     <div class="container_12">
         <div class="grid_2">
-            <div class="copy"> <a href="index.html" class="footer_logo"><img src="images/footer_logo.png"	alt=""></a> &copy; 2016 <a href="#">Privacy Policy</a> </div>
+            <div class="copy"> <a href="index.php" class="footer_logo"><img src="images/footer_logo.png"	alt=""></a> &copy; 2016 <a href="#">Privacy Policy</a> </div>
         </div>
         <div class="grid_2">
             <ul>

@@ -63,7 +63,7 @@ else if($_POST["action"] == "update")
     if(updateCustomer($con, $username, $updating))
     {
         echo "<script> alert(\"Info changed! Press OK to continue\") </script>";
-        echo "<script> location.href = \"../homepage.php\"; </script>";
+        echo "<script> location.href = \"../manageAccount.php\"; </script>";
     }
     else
     {

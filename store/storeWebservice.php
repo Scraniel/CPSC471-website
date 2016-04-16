@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 include '../utility/databaseConnect.php';
 include 'modifyStore.php';
 
@@ -46,7 +47,8 @@ else if($_POST["action"] == "add")
 else if($_POST["action"] == "update")
 {
     $updating = array();
-    $name = $_POST["name"];
+    //$name = $_POST["name"];
+    $name = $_SESSION["storename"];
 
     if(!empty($_POST["email"]))
         $updating["email"] =  $_POST["email"];
@@ -55,7 +57,8 @@ else if($_POST["action"] == "update")
 
     if(updateStore($con, $name, $updating))
     {
-        echo "Successfully updated store '$name'!";
+        echo "<script> alert(\"Info changed! Press OK to continue\") </script>";
+        echo "<script> location.href = \"../manageAccount.php\"; </script>";
     }
     else
     {

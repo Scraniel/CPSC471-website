@@ -1,3 +1,7 @@
+<?php
+    session_start()
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +26,7 @@
   <div class="container_12">
     <div class="grid_12">
       <div class="h_phone">Need Help? Call Us +1 (800) 123 4567</div>
-      <h1><a href="index.html"><img src="images/logo.png" alt=""></a> </h1>
+      <h1><a href="index.php"><img src="images/logo.png" alt=""></a> </h1>
       <div class="clear"></div>
     </div>
     <div class="clear"></div>
@@ -31,10 +35,10 @@
         <div class="container_12">
             <div class="grid_12">
                 <!-- <div class="socials"><a href="#"></a><a href="#"></a></div>-->
-                <div class="autor"> <a href="login.html">Login</a> <a href="login.html">Create account</a> </div>
+                <div class="autor"> <a href="customer/logout.php">Logout</a> </div>
                 <nav class="">
                     <ul class="sf-menu">
-                        <li class="current"><a href="index.html">Home</a></li>
+                        <li class="current"><a href="index.php">Home</a></li>
                         <li class="with_ul"><a href="#">Stores</a></li>
                         <li><a href="#">Products</a>
                             <ul>
@@ -63,15 +67,35 @@
         <h3> </h3>
         <img src="images/page2_img1.jpg" alt="" class="img_inner fleft">
         <div class="extra_wrapper">
-            <h3>Login</h3>
-            <form name ="login" style="display : inline" action="../login.php" method="post" onsubmit = "return validateForm()">
-                <label class="login"> <span>Please enter username and password:</span></br></br></span>
-                <input type="text" name="username" placeholder="Username" id="username" /> </br></br>
-                <input type="password" name="password" placeholder="Password" id="password" /> </br></br>
-             <!--   <a href="#" class="btn" data-type="submit">Submit</a></label>-->
-                  <button> Submit </button></label>
-            </form>
-
+            <h3>Manage Account</h3>
+            <?php
+                if(isset($_SESSION["username"]))
+                {   
+                    ?>
+                        <form name ="login" style="display : inline" action="customer/customerWebservice.php" method="post" onsubmit = "return validateForm()">
+                            <label class="login"> <span>Please enter new email or password:</span></br></br></span>
+                            <input type="text" name="email" placeholder="New Email" id="username" /> </br></br>
+                            <input type="password" name="password" placeholder="New Password" id="password" /> </br></br>
+                            <input type="hidden" name="action" value="update">
+                         <!--   <a href="#" class="btn" data-type="submit">Submit</a></label>-->
+                              <button> Submit </button></label>
+                        </form>
+                <?php
+                }
+                else if (isset($_SESSION["storename"]))
+                    {
+                    ?> 
+                        <form name ="login" style="display : inline" action="store/storeWebservice.php" method="post" onsubmit = "return validateForm()">
+                            <label class="login"> <span>Please enter new email or password:</span></br></br></span>
+                            <input type="text" name="email" placeholder="New Email" id="username" /> </br></br>
+                            <input type="password" name="password" placeholder="New Password" id="password" /> </br></br>
+                            <input type="hidden" name="action" value="update">
+                         <!--   <a href="#" class="btn" data-type="submit">Submit</a></label>-->
+                              <button> Submit </button></label>
+                        </form>
+                    <?php
+                }
+            ?>
             <script>
                 function validateForm() {
                     var username = document.forms["login"]["username"].value;
