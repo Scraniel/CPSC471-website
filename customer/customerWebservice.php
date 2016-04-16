@@ -75,12 +75,14 @@ else if($_POST["action"] == "subscribe")
     //$username = $_POST["username"];
     $username = $_SESSION["username"];
     $name = $_POST["name"];
-    //$emailNotifications = !empty($_POST["emailNotifications"]) ? true : false;
-    $emailNotifications = true;
+    $emailNotifications = !empty($_POST["emailNotifications"]) ? true : false;
+    //$emailNotifications = true;
 
     if(addSubscription($con, $username, $name, $emailNotifications))
     {
-        echo "Successfully subscribed '$username' to '$name'!";
+        //echo "<script> alert(\"Info changed! Press OK to continue\") </script>";
+        echo "<script> alert(\"Successfully unsubscribed $username from $name!\") </script>";
+        echo "<script> location.href = \"../manageAccount.php\"; </script>";
     }
     else
     {
@@ -90,12 +92,15 @@ else if($_POST["action"] == "subscribe")
 }
 else if($_POST["action"] == "unsubscribe")
 {
-    $username = $_POST["username"];
+    //$username = $_POST["username"];
+    $username = $_SESSION["username"];
     $name = $_POST["name"];
 
     if(deleteSubscription($con, $username, $name))
     {
         echo "Successfully unsubscribed '$username' from '$name'!";
+        echo "<script> alert(\"Successfully unsubscribed $username from $name!\") </script>";
+        echo "<script> location.href = \"../manageAccount.php\"; </script>";
     }
     else
     {

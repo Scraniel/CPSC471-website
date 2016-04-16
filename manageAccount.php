@@ -84,7 +84,7 @@
                         <h3>Current subscriptions</h3> 
                             <?php  include 'utility/databaseConnect.php';
                             $username = $_SESSION['username'];
-                            $sql = "SELECT st.name 
+                            $sql = "SELECT st.name
                                     FROM SUBSCRIBES_TO as st
                                     WHERE st.username = '$username'";
                             $result = mysqli_query($con,$sql);
@@ -101,9 +101,10 @@
                                 foreach($row as $field => $value) {
                                     if(!is_int($field))
                                     {
-                                            echo "$value <br>";
+                                            echo "$value";
                                     }
                                 }
+                                echo "<br>";
                                 echo '</tr>';
                             }
                             echo "</table>";
@@ -121,10 +122,32 @@
                             echo "</select><br>";
                             ?>
                         
-                            Email notifications? <input type="checkbox" name="emailNotifications" value="true">
+                            Email notifications? <input type="checkbox" name="emailNotifications" value="true"><br>
                             <input type="hidden" name = "action" value="subscribe">
-                            <input type="submit" value="Add Subscription">
+                            <input type="submit" value="Subscribe">
                             </form>
+                            
+                            <?php
+                            
+                            $sqlDel = "SELECT name
+                                    FROM SUBSCRIBES_TO
+                                    WHERE username = '$username'";
+                            $resultDel = mysqli_query($con, $sqlDel);
+
+                            echo "<form action=\"customer/customerWebservice.php\" method=\"post\">";
+                            echo "<h3>Remove Subscription:</h3> <select name='name'>";
+                            while ($row = mysqli_fetch_array($resultDel)){
+                                echo "<option value='" . addslashes($row["name"]) . "'>" . $row["name"] . "</option>";
+                            }
+                            echo "</select><br>";
+                            ?>
+                        
+                            
+                            <input type="hidden" name = "action" value="unsubscribe">
+                            <input type="submit" value="Unsubscribe">
+                            </form>
+                            
+                            
                 <?php
                 }
                 else if (isset($_SESSION["storename"]))
