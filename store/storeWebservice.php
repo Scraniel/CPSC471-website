@@ -33,7 +33,9 @@ else if($_POST["action"] == "add")
 
     if(addStore($con, $name, $email, $password))
     {
-        echo "Successfully added store '$name'!";
+        echo "<script> alert(\"Thank you for creating a store, $name! Press OK to continue\") </script>";
+        $_SESSION["storename"] = $name;
+        echo "<script> location.href = \"../homeLoggedInStore.php\"; </script>";
     }
     else
     {
