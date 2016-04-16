@@ -72,9 +72,11 @@ else if($_POST["action"] == "update")
 }
 else if($_POST["action"] == "subscribe")
 {
-    $username = $_POST["username"];
+    //$username = $_POST["username"];
+    $username = $_SESSION["username"];
     $name = $_POST["name"];
-    $emailNotifications = !empty($_POST["emailNotifications"]) ? true : false;
+    //$emailNotifications = !empty($_POST["emailNotifications"]) ? true : false;
+    $emailNotifications = true;
 
     if(addSubscription($con, $username, $name, $emailNotifications))
     {
