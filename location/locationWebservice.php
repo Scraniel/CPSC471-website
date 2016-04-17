@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 include '../utility/databaseConnect.php';
 include 'modifyLocation.php';
 
@@ -8,7 +10,8 @@ include 'modifyLocation.php';
 if($_POST["action"] == "add")
 {
     $address = $_POST["address"];
-    $name = $_POST["name"];
+    //$name = $_POST["name"];
+    $name = $_SESSION["storename"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
     $open_hours = $_POST["open_hours"];
@@ -16,7 +19,8 @@ if($_POST["action"] == "add")
 
     if(addLocation($con, $name, $address, $email, $phone, $open_hours, $closed_hours))
     {
-        echo "Successfully added location at $address to the Store '$name'!";
+        echo "<script> alert(\"Successfully added location at $address to the Store '$name'!\") </script>";
+        echo "<script> location.href = \"../manageAccount.php\"; </script>";
     }
     else
     {
@@ -28,11 +32,13 @@ if($_POST["action"] == "add")
  */
 else if($_POST["action"] == "delete")
 {
-    $name = $_POST["name"];
+    //$name = $_POST["name"];
+    $name = $_SESSION["storename"];
     $address = $_POST["address"];
     if(deleteLocation($con, $name, $address))
     {
-        echo "Deleted location at '$address' from store '$name' successfully!";
+        echo "<script> alert(\"Deleted location at '$address' from store '$name' successfully!\") </script>";
+        echo "<script> location.href = \"../manageAccount.php\"; </script>";
     }
     else
     {
@@ -46,7 +52,8 @@ else if($_POST["action"] == "delete")
 else if($_POST["action"] == "update")
 {
     $updating = array();
-    $name = $_POST["name"];
+    //$name = $_POST["name"];
+    $name = $_SESSION["storename"];
     $address = $_POST["address"];
 
     if(!empty($_POST["email"]))
@@ -60,7 +67,8 @@ else if($_POST["action"] == "update")
 
     if(updateLocation($con, $name, $address, $updating))
     {
-        echo "Successfully updated location at '$address' from Store '$name'!";
+        echo "<script> alert(\"Successfully updated location at '$address' from Store '$name'!\") </script>";
+        echo "<script> location.href = \"../manageAccount.php\"; </script>";
     }
     else
     {
