@@ -33,6 +33,7 @@ session_start()
     <div class="menu_block">
         <div class="container_12">
             <div class="grid_12">
+                
                 <!-- <div class="socials"><a href="#"></a><a href="#"></a></div>-->
             <?php
             if(!isset($_SESSION["username"])&&!isset($_SESSION["storename"]))
@@ -52,7 +53,7 @@ session_start()
                     <ul class="sf-menu">
                         <li class="current"><a href="index.php">Home</a></li>
                         <li class="with_ul"><a href="storesGeneral.php">Stores</a></li>
-                        <li><a href="#">Products</a>
+                        <li><a href="productsGeneral.php">Products</a>
                             <ul>
                                 <li><a href="#">Sort By</a>
                                     <ul>
@@ -75,67 +76,43 @@ session_start()
 <div class="content">
     <div class="white wt3">
         <div class="container_12">
-            <div class="grid_3 prefix_1">
-                <div class="blog_search">
-                    <h5>Search</h5>
-                    <form id="form1" action="#">
-                        <span>Enter keywords</span>
-                        <input type="text" value="" >
-                        <a onClick="document.getElementById('form1').submit()" href="#"></a>
-                    </form>
-                </div>
-            </div>
-            <div class="grid_12">
-                <h3>Our Products</h3>
-            </div>
-            <div class="clear"></div>
+            
+            <h3> Current reservations </h3>
+            
+                                
             <?php
             include 'utility/databaseConnect.php';
             include 'utility/utilityFunctions.php';
+            $username = $_SESSION["username"];
+            $reserves = getReservations($con, $username);
+            foreach ($reserves as $reserve) {
+                $address = $reserve['address'];
+                $name = $reserve['name'];
+                $id = $reserve['id'];
+                $quantity = $reserve['quantity'];
+                $date_reserved = $reserve['date_reserved'];
 
-            $rows = getTable($con, 'ITEM');
+                echo "<b>Store: </b>".$name."<br>";
+                echo "<b>Address: </b>".$address."<br>";
+                echo "<b>Item id: </b>".$id."<br>";             //TODO: GET ITEM NAME MAYBE PICTURE
+                echo "<b>Quantity: </b>".$quantity."<br>";
+                echo "<b>Date Reserved: </b>".$date_reserved."<br>";
 
-            foreach ($rows as $row) {
-                $id = $row['id'];
-                $imagePath = 'item/uploads/'.$row['picture'];
-                $name = $row['name'];
-                $description = $row['description'];
-                echo "<div class='grid_5'> <img src='$imagePath' alt='' class='img_inner fleft' style='width:304px;height:228px;'>
-                <div class='extra_wrapper'>
-                    <p class='col1'>$name</p>
-                    $description<br>";
-                    if(isset($_SESSION["username"]))
-                    {
-                        echo "<a href='itemReservation.php?id=$id' class='btn'>More</a> </div>
-                        </div>";
-                    }
-                    else if(isset($_SESSION["storename"]))
-                    {
-                        echo "<a href='itemStore.php?id=$id' class='btn'>More</a> </div>
-                        </div>";
-                    }
-                    else
-                    {
-                        echo "<a href=# class='btn'>More</a> </div>
-                        </div>";
-                    }
+                echo 
+                "<form action='customer/customerWebservice.php' method='post'>
+                <input type='hidden' name='id' value='$id'>
+                <input type='hidden' name='name' value='$name'>
+                <input type='hidden' name='address' value='$address'>
+                <input type='hidden' name='action' value='cancelReservation'>
+                <input type='submit' value='Cancel Reservation'></form>";
+
+                echo "<br>";
             }
             ?>
+                
             <div class="clear"></div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <?php
-                if(isset($_SESSION["storename"]))
-                {   
-                    echo "<a href = 'itemManager.php' class = 'btn'>Manage Items</a>";
-                }
-                else
-                {
-                    
-                }
-                ?>
+            
+            
         </div>
     </div>
 </div>

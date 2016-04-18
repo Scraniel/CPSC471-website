@@ -95,7 +95,7 @@
     {
         if($date_reserved == null)
             $date_reserved = date("Y-m-d H:i:s");
-        
+            $date_picked_up = date("Y-m-d H:i:s");
         $sql = "INSERT INTO RESERVES (username, id, address, name, quantity, date_reserved, date_picked_up) VALUES ('$username', '$id', '$address', '$name', '$quantity', '$date_reserved', '$date_picked_up')";
         if(!mysqli_query($con, $sql))
             return false;

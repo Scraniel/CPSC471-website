@@ -67,6 +67,9 @@
         <h3> </h3>
         <img src="images/page2_img1.jpg" alt="" class="img_inner fleft">
         <div class="extra_wrapper">
+            
+            <a href ="customerReservations.php" class ="btn">My Reservations</a>
+            
             <h3>Manage Account</h3>
             <?php
                 if(isset($_SESSION["username"]))
@@ -81,6 +84,7 @@
                               <button> Submit </button></label>
                         </form>
                     <br><br>
+                    
                         <h3>Current subscriptions</h3> 
                             <?php  include 'utility/databaseConnect.php';
                             $username = $_SESSION["username"];

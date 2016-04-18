@@ -98,7 +98,7 @@ else if($_POST["action"] == "unsubscribe")
 
     if(deleteSubscription($con, $username, $name))
     {
-        echo "Successfully unsubscribed '$username' from '$name'!";
+        //echo "Successfully unsubscribed '$username' from '$name'!";
         echo "<script> alert(\"Successfully unsubscribed $username from $name!\") </script>";
         echo "<script> location.href = \"../manageAccount.php\"; </script>";
     }
@@ -123,7 +123,8 @@ else if($_POST["action"] == "toggleNotifications")
 }
 else if($_POST["action"] == "reserve")
 {
-    $username = $_POST["username"];
+    //$username = $_POST["username"];
+    $username = $_SESSION["username"];
     $id = $_POST["id"];
     $address = $_POST["address"];
     $name = $_POST["name"];
@@ -131,7 +132,9 @@ else if($_POST["action"] == "reserve")
 
     if(reserveItem($con, $username, $id, $address, $name, $quantity))
     {
-        echo "Successfully reserved item with ID '$id' from the '$address' location of '$name'!";
+        //echo "Successfully reserved item with ID '$id' from the '$address' location of '$name'!";
+        echo "<script> alert(\"Successfully reserved item with ID $id from the $address location of $name!\") </script>";
+        echo "<script> location.href = \"../productsGeneral.php\"; </script>";
     }
     else
     {
@@ -140,14 +143,17 @@ else if($_POST["action"] == "reserve")
 }
 else if($_POST["action"] == "cancelReservation")
 {
-    $username = $_POST["username"];
+    //$username = $_POST["username"];
+    $username = $_SESSION["username"];
     $id = $_POST["id"];
     $address = $_POST["address"];
     $name = $_POST["name"];
 
     if(cancelReservation($con, $username, $id, $address, $name))
     {
-        echo "Successfully cancelled reservation of item with ID '$id' from the '$address' location of '$name'!";
+        //echo "Successfully cancelled reservation of item with ID '$id' from the '$address' location of '$name'!";
+        echo "<script> alert(\"Successfully cancelled reservation of item with ID $id from the $address location of $name!\") </script>";
+        echo "<script> location.href = \"../customerReservations.php\"; </script>";
     }
     else
     {
