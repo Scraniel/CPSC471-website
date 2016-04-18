@@ -101,13 +101,13 @@ $(window).load(
           <ul class="sf-menu">
             <li class="current"><a href="index.php">Home</a></li>
             <li class="with_ul"><a href="storesGeneral.php">Stores</a></li>
-            <li><a href="productsGeneral.html">Products</a>
+            <li><a href="productsGeneral.php">Products</a>
               <ul>
-                <li><a href="productsGeneral.html">Sort By</a>
+                <li><a href="productsGeneral.php">Sort By</a>
                   <ul>
-                    <li><a href="productsGeneral.html">Alphabetical</a></li>
-                    <li><a href="productsGeneral.html">Category</a></li>
-                    <li><a href="productsGeneral.html">Store</a></li>
+                    <li><a href="productsGeneral.php">Alphabetical</a></li>
+                    <li><a href="productsGeneral.php">Category</a></li>
+                    <li><a href="productsGeneral.php">Store</a></li>
                   </ul>
                 </li>
               </ul>
