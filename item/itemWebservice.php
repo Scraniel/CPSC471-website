@@ -63,7 +63,7 @@ else if($_POST["action"] == "add")
     $pictureResult = addItemPicture($fileToUpload);
     handlePictureAdd($pictureResult, $fileToUpload["name"]);
 
-    if(addItem($con, $id, $fileToUpload["name"], $description, $name, $made_in))
+    if(addItem($con, $id, addslashes($fileToUpload["name"]), addslashes($description), addslashes($name), addslashes($made_in)))
     {
         echo "Successfully added item '$name'!";
     }

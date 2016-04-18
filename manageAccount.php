@@ -40,13 +40,13 @@
                     <ul class="sf-menu">
                         <li><a href="index.php">Home</a></li>
                         <li><a href="storesGeneral.php">Stores</a></li>
-                        <li class="with_ul"><a href="productsGeneral.html">Products</a>
+                        <li class="with_ul"><a href="productsGeneral.php">Products</a>
                             <ul>
-                                <li><a href="productsGeneral.html">Sort By</a>
+                                <li><a href="productsGeneral.php">Sort By</a>
                                     <ul>
-                                        <li><a href="productsGeneral.html">Alphabetical</a></li>
-                                        <li><a href="productsGeneral.html">Category</a></li>
-                                        <li><a href="productsGeneral.html">Store</a></li>
+                                        <li><a href="productsGeneral.php">Alphabetical</a></li>
+                                        <li><a href="productsGeneral.php">Category</a></li>
+                                        <li><a href="productsGeneral.php">Store</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -159,9 +159,104 @@
                             <input type="password" name="password" placeholder="New Password" id="password" /> </br></br>
                             <input type="hidden" name="action" value="update">
                          <!--   <a href="#" class="btn" data-type="submit">Submit</a></label>-->
-                              <button> Submit </button></label>
+                            <button>Submit</button></label>
                         </form>
+                            
+                            <h3> Current Locations </h3>
+                            <?php  
+                                include 'utility/databaseConnect.php';
+                                $username = $_SESSION['storename'];
+                                $sql = "SELECT address, email, phone, open_hours, closed_hours
+                                        FROM LOCATION
+                                        WHERE name = '$username'";
+                                $result = mysqli_query($con,$sql);
+
+                                if(!$result)
+                                {
+                                    echo "Query: $sql<br>";
+                                    var_dump($_POST);
+                                    die("Error: ".mysqli_error($con));
+                                }
+                                echo "<table>";
+                                while ($row = mysqli_fetch_array($result)) {
+                                    echo '<tr>';
+                                    foreach($row as $field => $value) {
+                                        if(!is_int($field))
+                                        {
+                                                echo "<b>$field</b> $value <br>";
+                                        }
+                                    }
+                                    echo "<br>";
+                                    echo '</tr>';
+                                }
+                                echo "</table>";
+                            
+                            ?>
+                            
+                            <h3> Add Location</h3>    
+                            
+                            <form action="location/locationWebservice.php" method="post">
+                                Address: <input type="text" name="address"><br>
+                                Email: <input type="text" name="email"><br>
+                                Phone: <input type="number" name="phone"><br>
+                                Open Time: <input type="time" name="open_hours" value="00:00:00"><br>
+                                Closed Time: <input type="time" name="closed_hours" value="00:00:00"><br>
+                                <input type="hidden" name = "action" value="add">
+                                <input type="submit" value="Add Location">
+                            </form>
+
+                            <h3> Update Location </h3>
+                            
+                            <form action="location/locationWebservice.php" method="post">
+                                
+                                <?php
+                                include 'utility/databaseConnect.php';
+                                $storename = $_SESSION["storename"];
+                                $sql = "SELECT address
+                                        FROM LOCATION
+                                        WHERE name = '$storename'";
+                                $result = mysqli_query($con, $sql);
+
+                                //echo "<form action=\"customer/customerWebservice.php\" method=\"post\">";
+                                echo "Address: <select name='address'>";
+                                while ($row = mysqli_fetch_array($result)){
+                                    echo "<option value='" . addslashes($row["address"]) . "'>" . $row["address"] . "</option>";
+                                }
+                                echo "</select><br>";
+                                ?>
+                                New Email: <input type="text" name="email"><br>
+                                New Phone: <input type="number" name="phone"><br>
+                                New Open Time: <input type="time" name="open_hours" value="00:00:00" ><br>
+                                New Closed Time: <input type="time" name="closed_hours" value="00:00:00"><br>
+                                <input type="hidden" name = "action" value="update">
+                                <input type="submit" value="Update Location">
+                            </form>
+                            
+                            <h3> Remove Location </h3>
+                            
+                            <form action="location/locationWebservice.php" method="post">
+
+                            <?php
+                                include 'utility/databaseConnect.php';
+                                $storename = $_SESSION["storename"];
+                                $sql = "SELECT address
+                                        FROM LOCATION
+                                        WHERE name = '$storename'";
+                                $result = mysqli_query($con, $sql);
+
+                                //echo "<form action=\"customer/customerWebservice.php\" method=\"post\">";
+                                echo "Address: <select name='address'>";
+                                while ($row = mysqli_fetch_array($result)){
+                                    echo "<option value='" . addslashes($row["address"]) . "'>" . $row["address"] . "</option>";
+                                }
+                                echo "</select><br>";
+                                ?>
+                                <input type="hidden" name = "action" value="delete">
+                                <input type="submit" value="Remove Location">
+                            </form>
                     <?php
+                    
+                        
                 }
             ?>
         </div>

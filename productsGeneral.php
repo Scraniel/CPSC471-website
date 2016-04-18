@@ -73,44 +73,24 @@
                 <h3>Our Products</h3>
             </div>
             <div class="clear"></div>
-            <div class="grid_4"> <img src="images/page4_img1.jpg" alt="" class="img_inner fleft">
-                <div class="extra_wrapper">
-                    <p class="col1">Kuokhasellus id adipiscing nut hylopyu wertrol.</p>
-                    Pellentesque luctus massa tincidunt odio	vitae vulputate mi veneneti atisorem ipsum. Dolor sitrol ametw consectetur adipisol cing elitrotymoni. <br>
-                    <a href="#" class="btn">More</a> </div>
-            </div>
-            <div class="grid_4"> <img src="images/page4_img2.jpg" alt="" class="img_inner fleft">
-                <div class="extra_wrapper">
-                    <p class="col1">Kuokhasellus id adipiscing nut hylopyu wertrol.</p>
-                    Pellentesque luctus massa tincidunt odio	vitae vulputate mi veneneti atisorem ipsum. Dolor sitrol ametw consectetur adipisol cing elitrotymoni. <br>
-                    <a href="#" class="btn">More</a> </div>
-            </div>
-            <div class="grid_4"> <img src="images/page4_img3.jpg" alt="" class="img_inner fleft">
-                <div class="extra_wrapper">
-                    <p class="col1">Kuokhasellus id adipiscing nut hylopyu wertrol.</p>
-                    Pellentesque luctus massa tincidunt odio	vitae vulputate mi veneneti atisorem ipsum. Dolor sitrol ametw consectetur adipisol cing elitrotymoni. <br>
-                    <a href="#" class="btn">More</a> </div>
-            </div>
-            <div class="clear cl6"></div>
-            <div class="grid_4"> <img src="images/page4_img4.jpg" alt="" class="img_inner fleft">
-                <div class="extra_wrapper">
-                    <p class="col1">Kuokhasellus id adipiscing nut hylopyu wertrol.</p>
-                    Pellentesque luctus massa tincidunt odio	vitae vulputate mi veneneti atisorem ipsum. Dolor sitrol ametw consectetur adipisol cing elitrotymoni. <br>
-                    <a href="#" class="btn">More</a> </div>
-            </div>
-            <div class="grid_4"> <img src="images/page4_img5.jpg" alt="" class="img_inner fleft">
-                <div class="extra_wrapper">
-                    <p class="col1">Kuokhasellus id adipiscing nut hylopyu wertrol.</p>
-                    Pellentesque luctus massa tincidunt odio	vitae vulputate mi veneneti atisorem ipsum. Dolor sitrol ametw consectetur adipisol cing elitrotymoni. <br>
-                    <a href="#" class="btn">More</a> </div>
-            </div>
-            <div class="grid_4"> <img src="images/page4_img6.jpg" alt="" class="img_inner fleft">
-                <div class="extra_wrapper">
-                    <p class="col1">Kuokhasellus id adipiscing nut hylopyu wertrol.</p>
-                    Pellentesque luctus massa tincidunt odio	vitae vulputate mi veneneti atisorem ipsum. Dolor sitrol ametw consectetur adipisol cing elitrotymoni. <br>
-                    <a href="#" class="btn">More</a> </div>
-            </div>
+            <?php
+            include 'utility/databaseConnect.php';
+            include 'utility/utilityFunctions.php';
 
+            $rows = getTable($con, 'ITEM');
+
+            foreach ($rows as $row) {
+                $imagePath = 'item/uploads/'.$row['picture'];
+                $name = $row['name'];
+                $description = $row['description'];
+                echo "<div class='grid_5'> <img src='$imagePath' alt='' class='img_inner fleft' style='width:304px;height:228px;'>
+                <div class='extra_wrapper'>
+                    <p class='col1'>$name</p>
+                    $description<br>
+                    <a href='#' class='btn'>More</a> </div>
+                </div>";
+            }
+            ?>
             <div class="clear"></div>
         </div>
     </div>
