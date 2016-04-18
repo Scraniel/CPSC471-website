@@ -230,8 +230,8 @@
                                 ?>
                                 New Email: <input type="text" name="email"><br>
                                 New Phone: <input type="number" name="phone"><br>
-                                New Open Time: <input type="time" name="open_hours" value="00:00:00" ><br>
-                                New Closed Time: <input type="time" name="closed_hours" value="00:00:00"><br>
+                                New Open Time: <input type="time" name="open_hours" ><br>
+                                New Closed Time: <input type="time" name="closed_hours" ><br>
                                 <input type="hidden" name = "action" value="update">
                                 <input type="submit" value="Update Location">
                             </form>

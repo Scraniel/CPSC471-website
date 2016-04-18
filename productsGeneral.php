@@ -93,8 +93,26 @@ session_start()
             include 'utility/databaseConnect.php';
             include 'utility/utilityFunctions.php';
 
-            $rows = getTable($con, 'ITEM');
+            $qualifications = "";
+            if(!empty($_GET['sort'])) {
+                switch ($_GET['sort'])
+                {
+                    case 'a':
+                        $qualifications = 'ORDER BY name';
+                        break;
+                    case 'c':
+                        // TODO: query for categories of this item, then sort by them
+                        break;
+                    case 's':
+                        // TODO: query for stores that have this item, then sort by them
+                        break;
 
+                    // TODO: May need to change the printing to accommodate for the same item in multiple categories / stores
+                }
+
+            }
+
+            $rows = getTable($con, 'ITEM', $qualifications);
             foreach ($rows as $row) {
                 $id = $row['id'];
                 $imagePath = 'item/uploads/'.$row['picture'];

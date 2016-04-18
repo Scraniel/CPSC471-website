@@ -80,30 +80,37 @@ session_start()
                 
                 <h3>Reserve Item </h3>
                 
-                <h4>Locations that have the item</h4> <br><br>
+
                     
                     <?php
                     include 'utility/databaseConnect.php';
                     include 'utility/utilityFunctions.php';
+
                     $id = $_GET['id'];
                     $contains = getContains($con, $id);
+                    $item = getItem($con, $id);
+                    $itemName = $item['name'];
+
+                    echo "<h4>Locations that have '$itemName'</h4> <br><br>";
+
                     foreach ($contains as $contain) {
                         $address = $contain['address'];
                         $name = $contain['name'];
+                        $price = $contain['price'];
 
-                        echo "<b>Store: </b>".$name."<br>";
-                        echo "<b>Address: </b>".$address."<br>";
-                        
-                        echo 
-                        "<form action='customer/customerWebservice.php' method='post'>
-                        Number to reserve:<input type='text' name='quantity'><br>
-                        <input type='hidden' name='id' value='$id'>
-                        <input type='hidden' name='name' value='$name'>
-                        <input type='hidden' name='address' value='$address'>
-                        <input type='hidden' name='action' value='reserve'>
-                        <input type='submit' value='Reserve from this address'></form>";
-                        
-                        echo "<br>";
+
+                        echo "<b>Store: </b>$name<br>
+                               <b>Address: </b>$address<br>
+                               <b>Price: </b>$$price<br>
+                               
+                        <form action='customer/customerWebservice.php' method='post'>
+                            Number to reserve:<input type='text' name='quantity'><br>
+                            <input type='hidden' name='id' value='$id'>
+                            <input type='hidden' name='name' value='$name'>
+                            <input type='hidden' name='address' value='$address'>
+                            <input type='hidden' name='action' value='reserve'>
+                            <input type='submit' value='Reserve from this address'>
+                        </form><br>";
                     }
                     ?>
                 

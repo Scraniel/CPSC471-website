@@ -105,9 +105,9 @@ $(window).load(
               <ul>
                 <li><a href="productsGeneral.php">Sort By</a>
                   <ul>
-                    <li><a href="productsGeneral.php">Alphabetical</a></li>
-                    <li><a href="productsGeneral.php">Category</a></li>
-                    <li><a href="productsGeneral.php">Store</a></li>
+                    <li><a href="productsGeneral.php?sort=a">Alphabetical</a></li>
+                    <li><a href="productsGeneral.php?sort=c">Category</a></li>
+                    <li><a href="productsGeneral.php?sort=s">Store</a></li>
                   </ul>
                 </li>
               </ul>
