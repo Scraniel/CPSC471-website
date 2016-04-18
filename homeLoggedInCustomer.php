@@ -66,7 +66,7 @@
             <h3>Homepage for customer login... more to come</h3>
             <?php
                 session_start();
-                echo "Logged in as: " .$_SESSION['username'];
+                echo "Logged in as: " .$_SESSION["username"];
             ?>
         </div>
       </div>

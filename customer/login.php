@@ -42,7 +42,7 @@ else if($_POST["action"] == "store")
 // Look for 1 valid result
 if ($count == 1) {
 
-    $_SESSION['username'] = $username;
+    $_SESSION["username"] = $username;
 
     echo "<script> alert(\"$username logged in successfully as customer! Press OK to continue\") </script>";
     
@@ -50,7 +50,7 @@ if ($count == 1) {
     //header("location:companion-finder.php"); // Redirect page upon successful authentication
 }
 else if ($countStore == 1) {
-    $_SESSION['storename'] = $username;
+    $_SESSION["storename"] = $username;
     
     echo "<script> alert(\"$username logged in successfully as a store! Press OK to continue\") </script>";
     

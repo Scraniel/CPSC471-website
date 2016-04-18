@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start()
+?>
 <html lang="en">
 <head>
 <title>DiSCOVER ORGANiC | Products</title>
@@ -31,11 +34,24 @@
         <div class="container_12">
             <div class="grid_12">
                 <!-- <div class="socials"><a href="#"></a><a href="#"></a></div>-->
-                <div class="autor"> <a href="login.html">Login</a> <a href="login.html">Create account</a> </div>
+            <?php
+            if(!isset($_SESSION["username"])&&!isset($_SESSION["storename"]))
+            {   
+                ?>
+                <div class="autor"> <a href="login.html">Login</a> <a href="createAccount.html">Create account</a> </div>
+                <?php
+            }
+            else
+            {
+                ?>
+                <div class="autor"> <a href="customer/logout.php">Logout</a> <a href="manageAccount.php">Manage my account</a> </div>
+                <?php
+            }
+            ?>
                 <nav class="">
                     <ul class="sf-menu">
                         <li class="current"><a href="index.php">Home</a></li>
-                        <li class="with_ul"><a href="#">Stores</a></li>
+                        <li class="with_ul"><a href="storesGeneral.php">Stores</a></li>
                         <li><a href="#">Products</a>
                             <ul>
                                 <li><a href="#">Sort By</a>
@@ -92,6 +108,20 @@
             }
             ?>
             <div class="clear"></div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <?php
+                if(isset($_SESSION["storename"]))
+                {   
+                    echo "<a href = 'itemManager.php' class = 'btn'>Manage Items</a>";
+                }
+                else
+                {
+                    
+                }
+                ?>
         </div>
     </div>
 </div>

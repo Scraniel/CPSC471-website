@@ -41,7 +41,9 @@ if($_POST["action"] == "delete")
 
     if(deleteItem($con, $id))
     {
-        echo "Deleted item with ID '$id' successfully!";
+        //echo "Deleted item with ID '$id' successfully!";
+        echo "<script> alert(\"Successfully deleted item with id $id!\") </script>";
+        echo "<script> location.href = \"../itemManager.php\"; </script>";
     }
     else
     {
@@ -65,7 +67,8 @@ else if($_POST["action"] == "add")
 
     if(addItem($con, $id, addslashes($fileToUpload["name"]), addslashes($description), addslashes($name), addslashes($made_in)))
     {
-        echo "Successfully added item '$name'!";
+        echo "<script> alert(\"Successfully added item $name!\") </script>";
+        echo "<script> location.href = \"../itemManager.php\"; </script>";
     }
     else
     {
@@ -107,7 +110,9 @@ else  if($_POST["action"] == "update")
 
     if(updateItem($con, $id, $updating))
     {
-        echo "Successfully updated item with ID '$id'!";
+        echo "<script> alert(\"Successfully updated item $id!\") </script>";
+        echo "<script> location.href = \"../itemManager.php\"; </script>";
+        
     }
     else
     {
@@ -126,7 +131,9 @@ else if($_POST["action"] == "category")
     
     if(addCategory($con, $id, $category))
     {
-        echo "Successfully added '$category' category to item with ID '$id'!";
+        //echo "Successfully added '$category' category to item with ID '$id'!";
+        echo "<script> alert(\"Successfully added $category category to item with ID $id!\") </script>";
+        echo "<script> location.href = \"../itemManager.php\"; </script>";
     }
     else
     {
@@ -140,7 +147,9 @@ else if($_POST["action"] == "deleteCategory")
 
     if(deleteCategory($con, $id, $category))
     {
-        echo "Removed category '$category' from item with ID '$id' successfully!";
+        //echo "Removed category '$category' from item with ID '$id' successfully!";
+        echo "<script> alert(\"Removed category $category from item with ID $id successfully!\") </script>";
+        echo "<script> location.href = \"../itemManager.php\"; </script>";
     }
     else
     {

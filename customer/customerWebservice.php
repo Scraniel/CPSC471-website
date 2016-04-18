@@ -81,7 +81,7 @@ else if($_POST["action"] == "subscribe")
     if(addSubscription($con, $username, $name, $emailNotifications))
     {
         //echo "<script> alert(\"Info changed! Press OK to continue\") </script>";
-        echo "<script> alert(\"Successfully unsubscribed $username from $name!\") </script>";
+        echo "<script> alert(\"Successfully subscribed $username to $name!\") </script>";
         echo "<script> location.href = \"../manageAccount.php\"; </script>";
     }
     else

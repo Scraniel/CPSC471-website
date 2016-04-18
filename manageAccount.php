@@ -83,7 +83,7 @@
                     <br><br>
                         <h3>Current subscriptions</h3> 
                             <?php  include 'utility/databaseConnect.php';
-                            $username = $_SESSION['username'];
+                            $username = $_SESSION["username"];
                             $sql = "SELECT st.name
                                     FROM SUBSCRIBES_TO as st
                                     WHERE st.username = '$username'";
@@ -165,7 +165,7 @@
                             <h3> Current Locations </h3>
                             <?php  
                                 include 'utility/databaseConnect.php';
-                                $username = $_SESSION['storename'];
+                                $username = $_SESSION["storename"];
                                 $sql = "SELECT address, email, phone, open_hours, closed_hours
                                         FROM LOCATION
                                         WHERE name = '$username'";

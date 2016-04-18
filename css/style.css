@@ -616,6 +616,16 @@ a.prev1:hover {
 	padding-top: 51px;
 	margin-bottom: 26px;
 }
+
+.container {
+        width: 500px;
+        clear: both;
+    }
+.container input {
+        width: 100%;
+        clear: both;
+    }
+
 /****Map***/
 
 .map {

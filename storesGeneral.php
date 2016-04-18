@@ -1,3 +1,7 @@
+<?php
+session_start()
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +35,20 @@
         <div class="container_12">
             <div class="grid_12">
                 <!-- <div class="socials"><a href="#"></a><a href="#"></a></div>-->
+            <?php
+            if(!isset($_SESSION["username"])&&!isset($_SESSION["storename"]))
+            {   
+                ?>
                 <div class="autor"> <a href="login.html">Login</a> <a href="createAccount.html">Create account</a> </div>
+                <?php
+            }
+            else
+            {
+                ?>
+                <div class="autor"> <a href="customer/logout.php">Logout</a> <a href="manageAccount.php">Manage my account</a> </div>
+                <?php
+            }
+            ?>
                 <nav class="">
                     <ul class="sf-menu">
                         <li><a href="index.php">Home</a></li>

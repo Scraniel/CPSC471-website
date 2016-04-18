@@ -84,7 +84,7 @@ $(window).load(
       <div class="grid_12">
        <!-- <div class="socials"><a href="#"></a><a href="#"></a></div>-->
         <?php
-            if(!isset($_SESSION["username"])&&!isset($_SESSION['storename']))
+            if(!isset($_SESSION["username"])&&!isset($_SESSION["storename"]))
             {   
                 ?>
                 <div class="autor"> <a href="login.html">Login</a> <a href="createAccount.html">Create account</a> </div>
