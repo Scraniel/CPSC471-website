@@ -63,21 +63,26 @@
         include 'utility/utilityFunctions.php';
 
         $stores = getTable($con, 'STORE');
-
         foreach ($stores as $store) {
             $storeName = $store['name'];
             echo "<div class='grid_12'>
                 <h3 class='head1'>$storeName</h3>
                 </div>";
 
-//            $locations = getTable($con, 'LOCATION');
-//            foreach ()
-//        <div class="grid_6"> <img src="images/page3_img1.jpg" alt="" class="img_inner fleft">
-//            <div class="extra_wrapper">
-//                <p class="p3 col1">Uokhasellus id adipiscing nu. </p>
-//                Lorem ipsum dolor sit amet, consectetur adipiscing elitylot. Integer semper dapibus pharetra. Aenean a rhoncus justo. Aenean consectetur tellus non purus accumsan id mollisar lorem commodo. Etiam quis ante mattis laoreet risus eterto condimentum dui. Sed id elementum nibh. Nunc consewity ecetur metus eu massa feugiat pellentesque. Praesentaloi accumsan eu sem non consectetur. <br>
-//                <a href="#" class="btn bt1">More</a> </div>
-//        </div>
+            $locations = getLocations($con, $storeName);
+            foreach ($locations as $location) {
+                $address = $location['address'];
+                $email = $location['email'];
+                $phone = $location['phone'];
+                $openHour = $location['open_hours'];
+                $closeHour = $location['closed_hours'];
+
+                echo "<div class='grid_6' >Address: $address<br>Opens at: $openHour<br>Closes at: $closeHour<br><br>
+                        <div class='extra_wrapper' >
+                        <p class='p3 col1' >Email: $email<br>Phone: $phone</p>
+                        </div >
+                    </div >";
+            }
         }
         ?>
         <div class="clear"></div>
