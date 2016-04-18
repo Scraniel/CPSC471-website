@@ -106,17 +106,17 @@ session_start()
                     $description<br>";
                     if(isset($_SESSION["username"]))
                     {
-                        echo "<a href='itemReservation.php?id=$id' class='btn'>More</a> </div>
+                        echo "<a href='itemReservation.php?id=$id' class='btn'>Reserve</a> </div>
                         </div>";
                     }
                     else if(isset($_SESSION["storename"]))
                     {
-                        echo "<a href='itemStore.php?id=$id' class='btn'>More</a> </div>
+                        echo "<a href='itemStore.php?id=$id' class='btn'>Add</a> </div>
                         </div>";
                     }
                     else
                     {
-                        echo "<a href=# class='btn'>More</a> </div>
+                        echo "<a href=# class='btn'>Login for more</a> </div>
                         </div>";
                     }
             }
