@@ -68,13 +68,15 @@
         <img src="images/page2_img1.jpg" alt="" class="img_inner fleft">
         <div class="extra_wrapper">
             
-            <a href ="customerReservations.php" class ="btn">My Reservations</a>
             
-            <h3>Manage Account</h3>
+            
+            
             <?php
                 if(isset($_SESSION["username"]))
                 {   
+                    echo "<a href =\"customerReservations.php\" class =\"btn\">My Reservations</a>";
                     ?>
+                        <h3>Manage Account</h3>
                         <form name ="login" style="display : inline" action="customer/customerWebservice.php" method="post" onsubmit = "return validateForm()">
                             <label class="login"> <span>Please enter new email or password:</span></br></br></span>
                             <input type="text" name="email" placeholder="New Email" id="username" /> </br></br>
@@ -156,7 +158,9 @@
                 }
                 else if (isset($_SESSION["storename"]))
                     {
+                    echo "<a href =\"storeContains.php\" class =\"btn\">Manage my items</a>";
                     ?>
+                        <h3>Manage Account</h3>
                         <form name ="login" style="display : inline" action="store/storeWebservice.php" method="post" onsubmit = "return validateForm()">
                             <label class="login"> <span>Please enter new email or password:</span></br></br></span>
                             <input type="text" name="email" placeholder="New Email" id="username" /> </br></br>

@@ -32,7 +32,7 @@
     function getItem($con, $id)
     {
 
-        return getTable($con, "ITEM", "WHERE id = '$id'");
+        return getTable($con, "ITEM", "WHERE id = '$id'")[0];
     }
 
 

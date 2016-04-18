@@ -134,7 +134,7 @@ session_start()
                     }
                     else
                     {
-                        echo "<a href=# class='btn'>Login for more</a> </div>
+                        echo "<a href='login.html' class='btn'>Login for more</a> </div>
                         </div>";
                     }
             }

@@ -57,7 +57,7 @@ session_start()
                             <ul>
                                 <li><a href="#">Sort By</a>
                                     <ul>
-                                        <li><a href="productsGeneral.php?sort=a">Alphabetical</a></li>
+                                        <li><a href="#">Alphabetical</a></li>
                                         <li><a href="#">Category</a></li>
                                         <li><a href="#">Store</a></li>
                                     </ul>
@@ -76,36 +76,75 @@ session_start()
 <div class="content">
     <div class="white wt3">
         <div class="container_12">
-            <div class ="container">
-                <h3>Add to location</h3>
-                
-                <?php
-                include 'utility/databaseConnect.php';
-                include 'utility/utilityFunctions.php';
+            
+            <h3> Update items </h3>
+            
+            <div class="container">
+            <?php
+            include 'utility/databaseConnect.php';
+            include 'utility/utilityFunctions.php';
+            $storename = $_SESSION["storename"];
+            
+            $locations = getLocations($con, $storename);
+            foreach ($locations as $location) {
+                $address = $location['address'];
 
-                $id = $_GET['id'];
-                $item = getItem($con, $id);
-                $itemName = $item['name'];
-
-                echo "<h4>Add '$itemName' to a location</h4> <br><br>";
-                echo "
+                echo "<h4>Update item at location: '$address'</h2>
                 <form action='store/storeWebservice.php' method='post'>";
                 include '/utility/databaseConnect.php';
-                $sql = "SELECT address FROM LOCATION WHERE name='".addslashes($_SESSION["storename"])."'";
+
+                echo "
+                Item to update: <select name='id'>";
+                $sql = "SELECT i.id, i.name FROM ITEM as i JOIN CONTAINS as c WHERE i.id = c.id AND c.name = '$storename' AND c.address = '$address'";
+
                 $result = mysqli_query($con, $sql);
 
-                echo "Location to add to: <select name='address'>";
+                if(!$result)
+                    echo "Error: ".mysqli_error($con);
                 while ($row = mysqli_fetch_array($result)){
-                    echo "<option value='" . addslashes($row["address"]) . "'>" . $row["address"] . "</option>";
+                    echo "<option value='" . addslashes($row["id"]) . "'>" .  $row['id'].":".$row["name"] . "</option>";
                 }
                 echo "</select><br>
-                Number in stock:<input type='text' name='num_in_stock'><br>
-                Price: $<input type='number' name='price' min='0' max='9999' step='0.01' size='4'><br>
-                <input type='hidden' name='id' value='$id'>
-                <input type='hidden' name='action' value='items'>
-                <input type='submit' value='Add Item'></form>";
-                ?>
+                New number in stock:<input type='text' name='num_in_stock'><br>
+                New price: $<input type='number' name='price' min='0' max='9999' step='0.01' size='4'><br>
+                <input type='hidden' name='address' value='$address'>
+                <input type='hidden' name='action' value='updateItems'>
+                <input type='submit' value='Update'></form>";
+            }
+            ?>
+                
+                <h3>Remove Items</h3>
+                
+            <?php
+            include 'utility/databaseConnect.php';
+            $storename = $_SESSION["storename"];
+            
+            $locations = getLocations($con, $storename);
+            foreach ($locations as $location) {
+                $address = $location['address'];
 
+                echo "<h4>Delete item at location: '$address'</h2>
+                <form action='store/storeWebservice.php' method='post'>";
+                include '/utility/databaseConnect.php';
+
+                echo "
+                Item to delete: <select name='id'>";
+                $sql = "SELECT i.id, i.name FROM ITEM as i JOIN CONTAINS as c WHERE i.id = c.id AND c.name = '$storename' AND c.address = '$address'";
+
+                $result = mysqli_query($con, $sql);
+
+                if(!$result)
+                    echo "Error: ".mysqli_error($con);
+                while ($row = mysqli_fetch_array($result)){
+                    echo "<option value='" . addslashes($row["id"]) . "'>" .  $row['id'].":".$row["name"] . "</option>";
+                }
+                echo "</select><br>
+                <input type='hidden' name='address' value='$address'>
+                <input type='hidden' name='action' value='deleteItems'>
+                <input type='submit' value='Delete'></form>";
+            }
+            ?>
+                
             </div>
             <div class="clear"></div>
             

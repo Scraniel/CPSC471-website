@@ -69,7 +69,8 @@ else if($_POST["action"] == "update")
 }
 else if($_POST["action"] == "items")
 {
-    $name = $_POST["name"];
+    //$name = $_POST["name"];
+    $name = $_SESSION["storename"];
     $address = $_POST["address"];
     $id = $_POST["id"];
     $num_in_stock = $_POST["num_in_stock"];
@@ -77,7 +78,9 @@ else if($_POST["action"] == "items")
 
     if(addItems($con, $name, $address, $id, $num_in_stock, $price))
     {
-        echo "Successfully added item with ID '$id' to store '$name's' location at $address!";
+        //echo "Successfully added item with ID '$id' to store '$name's' location at $address!";
+        echo "<script> alert(\"ISuccessfully added item with ID $id to store $name's location at $address!\") </script>";
+        echo "<script> location.href = \"../itemStore.php?id=$id\"; </script>";
     }
     else
     {
@@ -89,7 +92,8 @@ else if($_POST["action"] == "updateItems")
     $updating = array();
     $id = $_POST["id"];
     $address = $_POST["address"];
-    $name = $_POST["name"];
+    //$name = $_POST["name"];
+    $name = $_SESSION["storename"];
 
     if(!empty($_POST["num_in_stock"]))
         $updating["num_in_stock"] = $_POST["num_in_stock"];
@@ -104,6 +108,22 @@ else if($_POST["action"] == "updateItems")
     {
         echo "Error: ".mysqli_error($con);
     }
+}
+else if($_POST["action"] == "deleteItems")
+{
+    $name = $_SESSION["storename"];
+    $address = $_POST["address"];
+    $id = $_POST["id"];
+    
+    if(deleteItems($con, $id, $address, $name))
+    {
+            echo "Successfully deleted item with ID '$id' in store '$name's' location at $address!";
+    }
+    else
+    {
+        echo "Error: ".mysqli_error($con);
+    }
+    
 }
 
 

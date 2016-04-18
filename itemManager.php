@@ -53,11 +53,11 @@ session_start()
                     <ul class="sf-menu">
                         <li class="current"><a href="index.php">Home</a></li>
                         <li class="with_ul"><a href="storesGeneral.php">Stores</a></li>
-                        <li><a href="#">Products</a>
+                        <li><a href="productsGeneral.php">Products</a>
                             <ul>
                                 <li><a href="#">Sort By</a>
                                     <ul>
-                                        <li><a href="#">Alphabetical</a></li>
+                                        <li><a href="productsGeneral.php?sort=a">Alphabetical</a></li>
                                         <li><a href="#">Category</a></li>
                                         <li><a href="#">Store</a></li>
                                     </ul>
