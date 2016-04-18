@@ -58,35 +58,30 @@
 </header>
 <div class="black bl1 bl2">
     <div class="container_12">
-        <div class="grid_12">
-            <h3 class="head1">List of Stores</h3>
-        </div>
-        <div class="grid_6"> <img src="images/page3_img1.jpg" alt="" class="img_inner fleft">
-            <div class="extra_wrapper">
-                <p class="p3 col1">Uokhasellus id adipiscing nu. </p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elitylot. Integer semper dapibus pharetra. Aenean a rhoncus justo. Aenean consectetur tellus non purus accumsan id mollisar lorem commodo. Etiam quis ante mattis laoreet risus eterto condimentum dui. Sed id elementum nibh. Nunc consewity ecetur metus eu massa feugiat pellentesque. Praesentaloi accumsan eu sem non consectetur. <br>
-                <a href="#" class="btn bt1">More</a> </div>
-        </div>
-        <div class="grid_6"> <img src="images/page3_img2.jpg" alt="" class="img_inner fleft">
-            <div class="extra_wrapper">
-                <p class="p3 col1">Dokhasellus ad adipiscing nuwe. </p>
-                Klorem ipsum dolor sit amet, consectetur adipiscing elittet. Hnteger semper dapibus pharetra. Oenean a rhoncusyerli justo. Fenean consectetur tellus non purus accumsan idas mollisar lem commodo. Gtiam quis ante mattis laoreet risus eterto condimentum dui. Sed id elementum nibh. Nunctrew consewityecetur metus eu massa feugiat pellentesquejolw. Praesentaloi accumsan eu sem non consectetur. <br>
-                <a href="#" class="btn bt1">More</a> </div>
-        </div>
-        <div class="clear cl3"></div>
-        <div class="grid_6"> <img src="images/page3_img3.jpg" alt="" class="img_inner fleft">
-            <div class="extra_wrapper">
-                <p class="p3 col1">Mokhasellay ida adipiscing ntrule. </p>
-                Hoorem ipsum dolor sit amet, consectetur adipiscing elitltri ylot. Integer semper dapibus pharetra. Aenean a rhoncusy justo. Aenean consectetur tellus non purus accumsan idol mollisar lorem commodo. Tiam quis ante mattis laoreetweti risus eterto condimentum dui. Sed id elementum nibholotr. Nunc consewity rewtylomer. Gecetur metus eu massakolpe feugiat pellentesquaesentaloi accumsan. <br>
-                <a href="#" class="btn bt1">More</a> </div>
-        </div>
-        <div class="grid_6"> <img src="images/page3_img4.jpg" alt="" class="img_inner fleft">
-            <div class="extra_wrapper">
-                <p class="p3 col1">Nokhasellus adipiscing nurewq. </p>
-                Borem ipsum dolor sit amet consectetur adipiscing elitylot. Integer semper dapibus pharetra. Lenean a rhoncus justo. Aenean consectetur tellus non purus accumsan id mollisar lorem commodo. Otiam uis ante mattis laoreet risus eterto condimentum dui. Sed id elementum nibh. Nunc consewity ecetur metus eu massa feugiat pellentesque. Praesentaloi accumsan eu sem non consectetur. <br>
-                <a href="#" class="btn bt1">More</a> </div>
-        </div>
+        <?php
+        include 'utility/databaseConnect.php';
+        include 'utility/utilityFunctions.php';
+
+        $stores = getTable($con, 'STORE');
+
+        foreach ($stores as $store) {
+            $storeName = $store['name'];
+            echo "<div class='grid_12'>
+                <h3 class='head1'>$storeName</h3>
+                </div>";
+
+//            $locations = getTable($con, 'LOCATION');
+//            foreach ()
+//        <div class="grid_6"> <img src="images/page3_img1.jpg" alt="" class="img_inner fleft">
+//            <div class="extra_wrapper">
+//                <p class="p3 col1">Uokhasellus id adipiscing nu. </p>
+//                Lorem ipsum dolor sit amet, consectetur adipiscing elitylot. Integer semper dapibus pharetra. Aenean a rhoncus justo. Aenean consectetur tellus non purus accumsan id mollisar lorem commodo. Etiam quis ante mattis laoreet risus eterto condimentum dui. Sed id elementum nibh. Nunc consewity ecetur metus eu massa feugiat pellentesque. Praesentaloi accumsan eu sem non consectetur. <br>
+//                <a href="#" class="btn bt1">More</a> </div>
+//        </div>
+        }
+        ?>
         <div class="clear"></div>
+
     </div>
 </div>
 <footer>

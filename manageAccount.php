@@ -152,7 +152,7 @@
                 }
                 else if (isset($_SESSION["storename"]))
                     {
-                    ?> 
+                    ?>
                         <form name ="login" style="display : inline" action="store/storeWebservice.php" method="post" onsubmit = "return validateForm()">
                             <label class="login"> <span>Please enter new email or password:</span></br></br></span>
                             <input type="text" name="email" placeholder="New Email" id="username" /> </br></br>
