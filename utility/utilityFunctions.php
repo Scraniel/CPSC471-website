@@ -31,11 +31,8 @@
 
     function getItem($con, $id)
     {
-        $result = mysqli_query($con, "SELECT * FROM ITEM WHERE id = '$id'");
-        if(mysqli_num_rows($result) != 1)
-            return false;
-        else
-            return mysqli_fetch_assoc($result);
+
+        return getTable($con, "ITEM", "WHERE id = '$id'");
     }
 
 
