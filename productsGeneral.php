@@ -94,14 +94,16 @@ session_start()
             include 'utility/utilityFunctions.php';
 
             $qualifications = "";
+            $sort = null;
             if(!empty($_GET['sort'])) {
-                switch ($_GET['sort'])
+                $sort = $_GET['sort'];
+                switch ($sort)
                 {
                     case 'a':
                         $qualifications = 'ORDER BY name';
                         break;
                     case 'c':
-                        // TODO: query for categories of this item, then sort by them
+                        $qualifications = 'NATURAL JOIN CATEGORY ORDER BY category';
                         break;
                     case 's':
                         // TODO: query for stores that have this item, then sort by them
@@ -113,7 +115,17 @@ session_start()
             }
 
             $rows = getTable($con, 'ITEM', $qualifications);
+            $currentCategory = null;
             foreach ($rows as $row) {
+                if($sort == 'c')
+                {
+                    if($row['category'] != $currentCategory)
+                    {
+                        $currentCategory = $row['category'];
+                        echo "<div class='grid_12'><h4>".$currentCategory."</h4></div>";
+                    }
+                }
+
                 $id = $row['id'];
                 $imagePath = 'item/uploads/'.$row['picture'];
                 $name = $row['name'];
