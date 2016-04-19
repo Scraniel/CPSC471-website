@@ -109,6 +109,7 @@
                   <input type='hidden' name='address' value='$address'>
                   <input type='submit' value='View Items for this Store'>
                 </form>";
+                echo "<br><br>";
                 ?>
                 <br><br>
                 </div>

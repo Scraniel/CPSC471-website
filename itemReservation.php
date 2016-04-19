@@ -110,7 +110,7 @@
                                <b>Price: </b>$$price<br>
                                
                         <form action='customer/customerWebservice.php' method='post'>
-                            Number to reserve:<input type='text' name='quantity'><br>
+                            Reserve Quantity:<input type='text' name='quantity'><br>
                             <input type='hidden' name='id' value='$id'>
                             <input type='hidden' name='name' value='$name'>
                             <input type='hidden' name='address' value='$address'>

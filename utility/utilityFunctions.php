@@ -26,7 +26,7 @@
     
     function getContains($con, $id)     // gets all contains for given id
     {
-        return getTable($con, "CONTAINS", "WHERE id='$id'");
+        return getTable($con, "CONTAINS", "WHERE id='$id' ORDER BY name");
     }
     
     function getReservations($con, $username)     // gets all contains for given id
