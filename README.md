@@ -14,4 +14,4 @@ A website showcasing a database for organic and health food stores.
 ### Second option - Running off server:
 1. Visit http://manorievachon.com
 2. You should be prompted by basic http authentication; enter username 'root' and password 'D!5cover0rganic'
-3. You should be redirected to the main page. As with locally, visit http://manorievachon.com/index2 for poweruser page
+3. You should be redirected to the main page. As with locally, visit http://manorievachon.com/index2.html for poweruser page
