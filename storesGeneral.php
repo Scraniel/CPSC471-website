@@ -101,13 +101,14 @@
                 $closeHour = $location['closed_hours'];
 
                 echo "<div class='grid_6'>Address: $address<br>Opens at: $openHour<br>Closes at: $closeHour<br><br>
-                        Email: $email<br>Phone: $phone<br>";
-                ?>
-                <form action=\"productsGeneral.php\" method = "post">
-                  <input type='hidden' name='name' value='$storename'>
+                        Email: $email<br>Phone: $phone<br>
+                
+                <form action='productsGeneral.php' method = 'post'>
+                  <input type='hidden' name='name' value='$storeName'>
                   <input type='hidden' name='address' value='$address'>
-                  <a href="productsGeneral.php" address=$address name=$storeName class="btn" data-type="submit">View Items for this Store</a>
-                </form>
+                  <input type='submit' class='btn' value='View Items for this Store'>
+                </form>";
+                ?>
                 </div>
         <?php
             }

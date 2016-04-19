@@ -10,8 +10,13 @@
             var_dump($_POST);
             return false;
         }
-        
-        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        return $data;
     }
 
     function getLocations($con, $store)     // gets all locations for a given store
@@ -40,9 +45,23 @@
         return getTable($con, "ITEM", "WHERE id = '$id'")[0];
     }
 
-    function getLocationitem($con, $name, $address) // gets
+    function getLocationitem($con, $name, $address) // gets all items at a given location
     {
+        $sql = "SELECT i.name, i.id, i.description, i.made_in, i.picture, l.name AS sname, l.address FROM 
+                ITEM as i, LOCATION as l, CONTAINS as c WHERE l.name = c.name AND l.address = c.address AND i.id = c.id AND l.name ='$name' AND l.address = '$address'";
+        $result = mysqli_query($con,$sql);
+        if(!$result)
+        {
+            echo "Query: $sql<br>";
+            var_dump($_POST);
+            return false;
+        }
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
 
+        return $data;
     }
 
     function getStoreItems($con) // Gets all items paired with the stores they appear in
@@ -56,7 +75,12 @@
             return false;
         }
 
-        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        return $data;
     }
 
 

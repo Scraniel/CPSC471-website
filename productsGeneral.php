@@ -92,10 +92,7 @@
                     </form>
                 </div>
             </div>
-            <div class="grid_12">
-                <h3>Our Products</h3>
-            </div>
-            <div class="clear"></div>
+
             <?php
             include 'utility/databaseConnect.php';
             include 'utility/utilityFunctions.php';
@@ -115,7 +112,7 @@
                 }
 
             }
-//            if(!empty($_POST["address"]) && !empty($_POST["name"]))
+//
 //            {
 //                $qualifications = 'JOIN STORE'
 //            }
@@ -123,8 +120,25 @@
 
             if($sort == 's')
                 $rows = getStoreItems($con);
+            elseif (!empty($_POST["address"]) && !empty($_POST["name"]))
+                $rows = getLocationitem($con, $_POST["name"], $_POST["address"]);
             else
                 $rows = getTable($con, 'ITEM', $qualifications);
+
+            if (!empty($_POST["address"]) && !empty($_POST["name"])) {
+                $name = $_POST["name"];
+                $address = $_POST["address"];
+                echo "<div class='grid_12'>
+                <h3>Products from '$name' at '$address' location</h3>
+                </div>
+                <div class='clear'></div>";
+            }
+            else{
+                echo "<div class='grid_12'>
+                <h3>Our Products</h3>
+                </div>
+                <div class='clear'></div>";
+            }
 
             $currentHeading = null;
             foreach ($rows as $row) {
