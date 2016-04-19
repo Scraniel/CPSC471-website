@@ -34,15 +34,20 @@
         return getTable($con, "RESERVES", "WHERE name='$name'");
     }
 
-    function getItem($con, $id)
+    function getItem($con, $id) // gets a specific item
     {
 
         return getTable($con, "ITEM", "WHERE id = '$id'")[0];
     }
 
-    function getStoreItems($con)
+    function getLocationitem($con, $name, $address) // gets
     {
-        $sql = 'SELECT i.name, i.id, i.description, i.made_in, i.picture, s.name AS sname FROM ITEM as i, STORE as s, CONTAINS as c WHERE i.id = c.id AND c.name = s.name ORDER BY s.name';
+
+    }
+
+    function getStoreItems($con) // Gets all items paired with the stores they appear in
+    {
+        $sql = 'SELECT DISTINCT i.name, i.id, i.description, i.made_in, i.picture, s.name AS sname FROM ITEM as i, STORE as s, CONTAINS as c WHERE i.id = c.id AND c.name = s.name ORDER BY s.name';
         $result = mysqli_query($con,$sql);
         if(!$result)
         {

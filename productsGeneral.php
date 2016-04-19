@@ -115,6 +115,11 @@
                 }
 
             }
+//            if(!empty($_POST["address"]) && !empty($_POST["name"]))
+//            {
+//                $qualifications = 'JOIN STORE'
+//            }
+            
 
             if($sort == 's')
                 $rows = getStoreItems($con);
