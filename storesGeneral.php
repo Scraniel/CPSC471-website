@@ -100,13 +100,13 @@
                 $openHour = $location['open_hours'];
                 $closeHour = $location['closed_hours'];
 
-                echo "<div class='grid_6'>Address: $address<br>Opens at: $openHour<br>Closes at: $closeHour<br><br>
+                echo "<div class='grid_6'><b>Address: $address</b><br>Opens at: $openHour<br>Closes at: $closeHour<br><br>
                         Email: $email<br>Phone: $phone<br>
                 
                 <form action='productsGeneral.php' method = 'post'>
                   <input type='hidden' name='name' value='$storeName'>
                   <input type='hidden' name='address' value='$address'>
-                  <input type='submit' class='btn' value='View Items for this Store'>
+                  <input type='submit' value='View Items for this Store'>
                 </form>";
                 ?>
                 </div>
