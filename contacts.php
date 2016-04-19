@@ -23,7 +23,7 @@
 <header>
   <div class="container_12">
     <div class="grid_12">
-      <div class="h_phone">Need Help? Call Us +1 (800) 123 4567</div>
+      <div class="h_phone">Need Help? Call Us +1 (101) 101 CPSC</div>
       <h1><a href="index.php"><img src="images/logo.png" alt=""></a> </h1>
       <div class="clear"></div>
     </div>
@@ -32,24 +32,47 @@
   <div class="menu_block">
     <div class="container_12">
       <div class="grid_12">
-        <!-- <div class="socials"><a href="#"></a><a href="#"></a></div>-->
-        <div class="autor"> <a href="login.html">Login</a> <a href="login.html">Create account</a> </div>
+        <?php
+        session_start();
+
+        if(!isset($_SESSION["username"])&&!isset($_SESSION["storename"]))
+        {
+          ?>
+          <div class="autor"> <a href="login.html">Login</a> <a href="createAccount.html">Create account</a> </div>
+          <?php
+        }
+        else
+        {
+          ?>
+          <div class="autor">
+            <?php
+            if(isset($_SESSION["username"])) {
+              echo "Logged in as: ".$_SESSION["username"];
+            }
+            else {
+              echo "Logged in as: ".$_SESSION["storename"];
+            }
+            ?>
+            <a><a href="customer/logout.php">Logout</a> <a href="manageAccount.php">Manage my account</a> </div></a>
+          <?php
+        }
+        ?>
         <nav class="">
           <ul class="sf-menu">
-            <li class="current"><a href="index.php">Home</a></li>
-            <li class="with_ul"><a href="#">Stores</a></li>
-            <li><a href="productsGeneral.php">Products</a>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="storesGeneral.php">Stores</a></li>
+            <li class="with_ul"><a href="productsGeneral.php">Products</a>
               <ul>
-                <li><a href="#">Sort By</a>
+                <li>Sort By
                   <ul>
-                    <li><a href="productsGeneral.php?sort=a">Alphabetical</a></li>
-                    <li><a href="#">Category</a></li>
-                    <li><a href="#">Store</a></li>
+                    <li><a href="productsGeneral.php">Alphabetical</a></li>
+                    <li><a href="productsGeneral.php">Category</a></li>
+                    <li><a href="productsGeneral.php">Store</a></li>
                   </ul>
                 </li>
               </ul>
             </li>
-            <li><a href="contacts.html">Contacts</a></li>
+            <li class="current"><a href="contacts.php">Contacts</a></li>
           </ul>
         </nav>
         <div class="clear"></div>
@@ -65,20 +88,17 @@
         <h3>Contact Information</h3>
         <div class="map">
           <figure class="img_inner fleft">
-            <iframe src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Blush+Lane+Organic+Market,+Aspen,+Calgary&amp;aq=0&amp;sll=37.0625,-95.677068&amp;sspn=61.282355,146.513672&amp;ie=UTF8&amp;hq=&amp;hnear=Blush+Lane+Organic+Market,+Aspen,+Calgary&amp;ll=40.649974,-73.950005&amp;spn=0.01628,0.025663&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
-            <!--src='https://maps.google.com/maps?&amp;q="+ encodeURIComponent( $(this).text() ) +"&amp;output=embed'-->
-            <!--https://www.google.ca/maps/place/Blush+Lane+Organic+Market/@51.041275,-114.215562,17z/data=!3m1!4b1!4m2!3m1!1s0x53716dc4f96dc3e3:0xcffa4ab8c45d0c9d-->
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2506.641736008504!2d-114.13799474854683!3d51.078163249716255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53717db7481cb3b1%3A0x36aff4a9e3c803fb!2sUniversity+of+Calgary!5e0!3m2!1sen!2sca!4v1461024812014" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
           </figure>
-          <div class="text2">Blush Lane Organic Market </div>
+          <div class="text2">DiSCOVER TEAM</div>
           <address>
           <dl>
-            <dt> 3000-10 Aspen Stone Blvd SW,<br>
-              Calgary, AB T3H 0K3. </dt>
-            <dd><span>Telephone:</span>+1 403 210 1247</dd>
-            <dd><span>FAX:</span>+1 800 889 9898</dd>
-            <dd>E-mail: <a href="#" class="link-1">mail@blushlane.com</a></dd>
-          </dl>
+            <dt>You can find us in the MS CPSC labs<br><br></dt>
           </address>
+            <dd><span>Telephone:</span>+1 (101) 101 CPSC</dd><br>
+            <dd><span>FAX:</span>+1-101-111-CPSC</dd><br>
+            <dd>E-mail: <a href="#" class="link-1">CPSC471@manorievachon.com</a></dd>
+          </dl>
           <address class="mb0">
           <dl>
           </dl>
@@ -138,13 +158,13 @@
       </ul>
     </div>
     <div class="grid_3 prefix_1">
-      <h4>Newsletter</h4>
+<!--      <h4>Newsletter</h4>
       <form id="newsletter" action="#">
         <div class="success">Your subscribe request has been sent!</div>
         <label class="email"> <span>Enter e-mail address</span>
           <input type="email" value="" >
           <a href="#" class="btn" data-type="submit">Subscribe</a> <span class="error">*This is not a valid email address.</span> </label>
-      </form>
+      </form>-->
     </div>
     <div class="clear"></div>
   </div>

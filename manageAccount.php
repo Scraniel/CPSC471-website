@@ -25,7 +25,7 @@
 <header>
   <div class="container_12">
     <div class="grid_12">
-      <div class="h_phone">Need Help? Call Us +1 (800) 123 4567</div>
+      <div class="h_phone">Need Help? Call Us +1 (101) 101 CPSC</div>
       <h1><a href="index.php"><img src="images/logo.png" alt=""></a> </h1>
       <div class="clear"></div>
     </div>
@@ -51,7 +51,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="contacts.html">Contacts</a></li>
+                        <li><a href="contacts.php">Contacts</a></li>
                     </ul>
                 </nav>
                 <div class="clear"></div>
@@ -67,10 +67,7 @@
         <h3> </h3>
         <img src="images/page2_img1.jpg" alt="" class="img_inner fleft">
         <div class="extra_wrapper">
-            
-            
-            
-            
+
             <?php
                 if(isset($_SESSION["username"]))
                 {   
@@ -263,8 +260,6 @@
                                 <input type="submit" value="Remove Location">
                             </form>
                     <?php
-                    
-                        
                 }
             ?>
         </div>
@@ -293,13 +288,13 @@
             </ul>
         </div>
         <div class="grid_3 prefix_1">
-            <h4>Newsletter</h4>
+<!--            <h4>Newsletter</h4>
             <form id="newsletter" action="#">
                 <div class="success">Your subscribe request has been sent!</div>
                 <label class="email"> <span>Enter e-mail address</span>
                     <input type="email" value="" >
                     <a href="#" class="btn" data-type="submit">Subscribe</a> <span class="error">*This is not a valid email address.</span> </label>
-            </form>
+            </form>-->
         </div>
         <div class="clear"></div>
     </div>

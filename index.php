@@ -1,7 +1,3 @@
-<?php
-    session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +69,7 @@ $(window).load(
 <header>
   <div class="container_12">
     <div class="grid_12">
-      <div class="h_phone">Need help? Call Us +1 (800) 123-4567</div>
+      <div class="h_phone">Need help? Call Us +1 (101) 101 CPSC</div>
       <h1><a href="index.php"><img src="images/logo.png" alt=""></a></h1>
       <div class="clear"></div>
     </div>
@@ -82,37 +78,47 @@ $(window).load(
   <div class="menu_block">
     <div class="container_12">
       <div class="grid_12">
-       <!-- <div class="socials"><a href="#"></a><a href="#"></a></div>-->
-        <?php
-            if(!isset($_SESSION["username"])&&!isset($_SESSION["storename"]))
-            {   
-                ?>
-                <div class="autor"> <a href="login.html">Login</a> <a href="createAccount.html">Create account</a> </div>
-                <?php
-            }
-            else
-            {
-                ?>
-                <div class="autor"> <a href="customer/logout.php">Logout</a> <a href="manageAccount.php">Manage my account</a> </div>
-                <?php
-            }
-        ?>
+          <?php
+          session_start();
+
+          if(!isset($_SESSION["username"])&&!isset($_SESSION["storename"]))
+          {
+              ?>
+              <div class="autor"> <a href="login.html">Login</a> <a href="createAccount.html">Create account</a> </div>
+              <?php
+          }
+          else
+          {
+              ?>
+              <div class="autor">
+                  <?php
+                  if(isset($_SESSION["username"])) {
+                      echo "Logged in as: ".$_SESSION["username"];
+                  }
+                  else {
+                      echo "Logged in as: ".$_SESSION["storename"];
+                  }
+                  ?>
+                  <a><a href="customer/logout.php">Logout</a> <a href="manageAccount.php">Manage my account</a> </div></a>
+              <?php
+          }
+          ?>
         <nav class="">
           <ul class="sf-menu">
-            <li class="current"><a href="index.php">Home</a></li>
-            <li class="with_ul"><a href="storesGeneral.php">Stores</a></li>
-            <li><a href="productsGeneral.php">Products</a>
-              <ul>
-                <li><a href="productsGeneral.php">Sort By</a>
+              <li class="current"><a href="index.php">Home</a></li>
+              <li><a href="storesGeneral.php">Stores</a></li>
+              <li class="with_ul"><a href="productsGeneral.php">Products</a>
                   <ul>
-                    <li><a href="productsGeneral.php?sort=a">Alphabetical</a></li>
-                    <li><a href="productsGeneral.php?sort=c">Category</a></li>
-                    <li><a href="productsGeneral.php?sort=s">Store</a></li>
+                <li>Sort By
+                  <ul>
+                    <li><a href="productsGeneral.php">Alphabetical</a></li>
+                    <li><a href="productsGeneral.php">Category</a></li>
+                    <li><a href="productsGeneral.php">Store</a></li>
                   </ul>
                 </li>
               </ul>
             </li>
-            <li><a href="contacts.html">Contacts</a></li>
+            <li><a href="contacts.php">Contacts</a></li>
           </ul>
         </nav>
         <div class="clear"></div>
@@ -200,13 +206,13 @@ $(window).load(
       </ul>
     </div>
     <div class="grid_3 prefix_1">
-      <h4>Newsletter</h4>
+<!--      <h4>Newsletter</h4>
       <form id="newsletter" action="#">
         <div class="success">Your subscribe request has been sent!</div>
         <label class="email"> <span>Enter e-mail address</span>
           <input type="email" value="" >
           <a href="#" class="btn" data-type="submit">Subscribe</a> <span class="error">*This is not a valid email address.</span> </label>
-      </form>
+      </form>-->
     </div>
     <div class="clear"></div>
   </div>

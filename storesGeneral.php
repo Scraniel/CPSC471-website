@@ -1,7 +1,3 @@
-<?php
-session_start()
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,21 +30,31 @@ session_start()
     <div class="menu_block">
         <div class="container_12">
             <div class="grid_12">
-                <!-- <div class="socials"><a href="#"></a><a href="#"></a></div>-->
-            <?php
-            if(!isset($_SESSION["username"])&&!isset($_SESSION["storename"]))
-            {   
-                ?>
-                <div class="autor"> <a href="login.html">Login</a> <a href="createAccount.html">Create account</a> </div>
                 <?php
-            }
-            else
-            {
+                session_start();
+
+                if(!isset($_SESSION["username"])&&!isset($_SESSION["storename"]))
+                {
+                    ?>
+                    <div class="autor"> <a href="login.html">Login</a> <a href="createAccount.html">Create account</a> </div>
+                    <?php
+                }
+                else
+                {
+                    ?>
+                    <div class="autor">
+                        <?php
+                        if(isset($_SESSION["username"])) {
+                            echo "Logged in as: ".$_SESSION["username"];
+                        }
+                        else {
+                            echo "Logged in as: ".$_SESSION["storename"];
+                        }
+                        ?>
+                        <a><a href="customer/logout.php">Logout</a> <a href="manageAccount.php">Manage my account</a> </div></a>
+                    <?php
+                }
                 ?>
-                <div class="autor"> <a href="customer/logout.php">Logout</a> <a href="manageAccount.php">Manage my account</a> </div>
-                <?php
-            }
-            ?>
                 <nav class="">
                     <ul class="sf-menu">
                         <li><a href="index.php">Home</a></li>
@@ -64,7 +70,7 @@ session_start()
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="contacts.html">Contacts</a></li>
+                        <li><a href="contacts.php">Contacts</a></li>
                     </ul>
                 </nav>
                 <div class="clear"></div>
@@ -94,11 +100,20 @@ session_start()
                 $openHour = $location['open_hours'];
                 $closeHour = $location['closed_hours'];
 
-                echo "<div class='grid_6' >Address: $address<br>Opens at: $openHour<br>Closes at: $closeHour<br><br>
-                        <div class='extra_wrapper' >
-                        <p class='p3 col1' >Email: $email<br>Phone: $phone</p>
-                        </div >
-                    </div >";
+                echo "<div class='grid_6'>Address: $address<br>Opens at: $openHour<br>Closes at: $closeHour<br><br>
+                        Email: $email<br>Phone: $phone<br><br>
+                        </div>";
+                ?>
+                <form action=\"productsGeneral.php\" method = "post">< class=\"btn bt1\">View Items for this Store</form>
+<!--               </div >";
+-->
+<!--                echo "<div class='grid_6' >Address: $address<br>Opens at: $openHour<br>Closes at: $closeHour<br><br>-->
+<!--                        <div class='extra_wrapper' >-->
+<!--                        <p class='p3 col1' >Email: $email<br>Phone: $phone</p>-->
+<!--                        <a href=\"#\" class=\"btn bt1\">View Items for this Store</a> </div>-->
+<!--                        </div >-->
+<!--                    </div >";-->
+        <?php
             }
         }
         ?>
@@ -124,13 +139,13 @@ session_start()
             </ul>
         </div>
         <div class="grid_3 prefix_1">
-            <h4>Newsletter</h4>
+<!--            <h4>Newsletter</h4>
             <form id="newsletter" action="#">
                 <div class="success">Your subscribe request has been sent!</div>
                 <label class="email"> <span>Enter e-mail address</span>
                     <input type="email" value="" >
                     <a href="#" class="btn" data-type="submit">Subscribe</a> <span class="error">*This is not a valid email address.</span> </label>
-            </form>
+            </form>-->
         </div>
         <div class="clear"></div>
     </div>

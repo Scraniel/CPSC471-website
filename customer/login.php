@@ -46,15 +46,14 @@ if ($count == 1) {
 
     echo "<script> alert(\"$username logged in successfully as customer! Press OK to continue\") </script>";
     
-    echo "<script> location.href = \"../homeLoggedInCustomer.php\"; </script>";
-    //header("location:companion-finder.php"); // Redirect page upon successful authentication
+    echo "<script> location.href = \"../storesGeneral.php\"; </script>";
 }
 else if ($countStore == 1) {
     $_SESSION["storename"] = $username;
     
     echo "<script> alert(\"$username logged in successfully as a store! Press OK to continue\") </script>";
     
-    echo "<script> location.href = \"../homeLoggedInStore.php\"; </script>";
+    echo "<script> location.href = \"../storesGeneral.php\"; </script>";
 }
 else {
     echo "<script> alert(\"Invalid Username or Password. Please try again\") </script>";
