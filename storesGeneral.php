@@ -61,7 +61,7 @@
                         <li class="current"><a href="storesGeneral.php">Stores</a></li>
                         <li class="with_ul"><a href="productsGeneral.php">Products</a>
                             <ul>
-                                <li><a href="productsGeneral.php">Sort By</a>
+                                <li>Sort By</a>
                                     <ul>
                                         <li><a href="productsGeneral.php?sort=a">Alphabetical</a></li>
                                         <li><a href="productsGeneral.php?sort=c">Category</a></li>
@@ -101,14 +101,14 @@
                 $closeHour = $location['closed_hours'];
 
                 echo "<div class='grid_6'>Address: $address<br>Opens at: $openHour<br>Closes at: $closeHour<br><br>
-                        Email: $email<br>Phone: $phone<br>";
+                        Email: $email<br>Phone: $phone";
                 ?>
                 <form action=\"productsGeneral.php\" method = "post">
                   <input type='hidden' name='name' value='$storename'>
                   <input type='hidden' name='address' value='$address'>
                   <a href="productsGeneral.php" address=$address name=$storeName class="btn" data-type="submit">View Items for this Store</a>
                 </form>
-                </div>
+                <br><br>
         <?php
             }
         }
