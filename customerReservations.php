@@ -77,37 +77,72 @@ session_start()
     <div class="white wt3">
         <div class="container_12">
             
-            <h3> Current reservations </h3>
+            
             
                                 
             <?php
-            include 'utility/databaseConnect.php';
-            include 'utility/utilityFunctions.php';
-            $username = $_SESSION["username"];
-            $reserves = getReservations($con, $username);
-            foreach ($reserves as $reserve) {
-                $address = $reserve['address'];
-                $name = $reserve['name'];
-                $id = $reserve['id'];
-                $quantity = $reserve['quantity'];
-                $date_reserved = $reserve['date_reserved'];
+            if(isset($_SESSION["username"]))
+            {
+                echo "<h3> My Current Reservations </h3>";
+                include 'utility/databaseConnect.php';
+                include 'utility/utilityFunctions.php';
+                $username = $_SESSION["username"];
+                $reserves = getReservations($con, $username);
+                foreach ($reserves as $reserve) {
+                    $address = $reserve['address'];
+                    $name = $reserve['name'];
+                    $id = $reserve['id'];
+                    $quantity = $reserve['quantity'];
+                    $date_reserved = $reserve['date_reserved'];
+                    
+                    $contains = getContains($con, $id);
+                    $item = getItem($con, $id);
+                    $itemName = $item['name'];
 
-                echo "<b>Store: </b>".$name."<br>";
-                echo "<b>Address: </b>".$address."<br>";
-                echo "<b>Item id: </b>".$id."<br>";             //TODO: GET ITEM NAME MAYBE PICTURE
-                echo "<b>Quantity: </b>".$quantity."<br>";
-                echo "<b>Date Reserved: </b>".$date_reserved."<br>";
+                    echo "<b>Store: </b>".$name."<br>";
+                    echo "<b>Address: </b>".$address."<br>";
+                    echo "<b>Item: </b>".$id.": ".$itemName."<br>";             //TODO: GET ITEM NAME MAYBE PICTURE
+                    echo "<b>Quantity: </b>".$quantity."<br>";
+                    echo "<b>Date Reserved: </b>".$date_reserved."<br>";
 
-                echo 
-                "<form action='customer/customerWebservice.php' method='post'>
-                <input type='hidden' name='id' value='$id'>
-                <input type='hidden' name='name' value='$name'>
-                <input type='hidden' name='address' value='$address'>
-                <input type='hidden' name='action' value='cancelReservation'>
-                <input type='hidden' name='username' value='".$_SESSION["username"]."'>
-                <input type='submit' value='Cancel Reservation'></form>";
+                    echo 
+                    "<form action='customer/customerWebservice.php' method='post'>
+                    <input type='hidden' name='id' value='$id'>
+                    <input type='hidden' name='name' value='$name'>
+                    <input type='hidden' name='address' value='$address'>
+                    <input type='hidden' name='action' value='cancelReservation'>
+                    <input type='hidden' name='username' value='".$_SESSION["username"]."'>
+                    <input type='submit' value='Cancel Reservation'></form>";
 
-                echo "<br>";
+                    echo "<br>";
+                }
+            }
+            else if(isset($_SESSION))
+            {
+                echo "<h3> Current Customer Reservations </h3>";
+                include 'utility/databaseConnect.php';
+                include 'utility/utilityFunctions.php';
+                $username = $_SESSION["storename"];
+                $reserves = getReservationsStore($con, $username);
+                foreach ($reserves as $reserve) {
+                    $address = $reserve['address'];
+                    $name = $reserve['username'];
+                    $id = $reserve['id'];
+                    $quantity = $reserve['quantity'];
+                    $date_reserved = $reserve['date_reserved'];
+                    
+                    $contains = getContains($con, $id);
+                    $item = getItem($con, $id);
+                    $itemName = $item['name'];
+
+                    echo "<b>Address: </b>".$address."<br>";
+                    echo "<b>Customer: </b>".$name."<br>";
+                    echo "<b>Item: </b>".$id.": ".$itemName."<br>";             //TODO: GET ITEM NAME MAYBE PICTURE
+                    echo "<b>Quantity: </b>".$quantity."<br>";
+                    echo "<b>Date Reserved: </b>".$date_reserved."<br>";
+                    echo "<br>";
+                }
+                
             }
             ?>
                 

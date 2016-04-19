@@ -28,6 +28,11 @@
     {
         return getTable($con, "RESERVES", "WHERE username='$username'");
     }
+    
+    function getReservationsStore($con, $name)     // gets all contains for given id
+    {
+        return getTable($con, "RESERVES", "WHERE name='$name'");
+    }
 
     function getItem($con, $id)
     {

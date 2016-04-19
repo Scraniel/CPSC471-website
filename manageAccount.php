@@ -161,6 +161,7 @@
                 else if (isset($_SESSION["storename"]))
                     {
                     echo "<a href =\"storeContains.php\" class =\"btn\">Manage my items</a>";
+                    echo "<a href =\"customerReservations.php\" class =\"btn\">See reservations</a>";
                     ?>
                         <h3>Manage Account</h3>
                         <form name ="login" style="display : inline" action="store/storeWebservice.php" method="post" onsubmit = "return validateForm()">
