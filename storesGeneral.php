@@ -104,9 +104,9 @@
                         Email: $email<br>Phone: $phone<br>";
                 ?>
                 <form action=\"productsGeneral.php\" method = "post">
-                    <input type='hidden' name='name' value='$storename'>
-                    <input type='hidden' name='address' value='$address'>
-                    <a href="productsGeneral.php" address=$address name=$storeName class="btn" data-type="submit">View Items for this Store</a>
+                  <input type='hidden' name='name' value='$storename'>
+                  <input type='hidden' name='address' value='$address'>
+                  <a href="productsGeneral.php" address=$address name=$storeName class="btn" data-type="submit">View Items for this Store</a>
                 </form>
                 </div>
         <?php
