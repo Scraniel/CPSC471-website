@@ -87,7 +87,7 @@
                     <h5>Search</h5>
                     <form id="form1" action="#">
                         <span>Enter keywords</span>
-                        <input type="text" value="" >
+                        <input type="text" name="search" value="" >
                         <a onClick="document.getElementById('form1').submit()" href="#"></a>
                     </form>
                 </div>
@@ -112,12 +112,13 @@
                 }
 
             }
-//
-//            {
-//                $qualifications = 'JOIN STORE'
-//            }
             
 
+            if(!empty($_GET["search"]))
+            {
+                $keyword = $_GET["search"];
+                $qualifications = "WHERE name LIKE '%$keyword%'";
+            }
             if($sort == 's')
                 $rows = getStoreItems($con);
             elseif (!empty($_POST["address"]) && !empty($_POST["name"]))
