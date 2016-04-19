@@ -96,7 +96,7 @@
             <dt>You can find us in the MS CPSC labs<br><br></dt>
           </address>
             <dd><span>Telephone:</span>+1 (101) 101 CPSC</dd><br>
-            <dd><span>FAX:</span>+1-101-111-CPSC</dd><br>
+            <dd><span>FAX:</span>+1 (101) 111 CPSC</dd><br>
             <dd>E-mail: <a href="#" class="link-1">CPSC471@manorievachon.com</a></dd>
           </dl>
           <address class="mb0">
