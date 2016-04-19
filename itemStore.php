@@ -103,6 +103,7 @@ session_start()
                 Price: $<input type='number' name='price' min='0' max='9999' step='0.01' size='4'><br>
                 <input type='hidden' name='id' value='$id'>
                 <input type='hidden' name='action' value='items'>
+                <input type='hidden' name='name' value='".$_SESSION["storename"]."'>
                 <input type='submit' value='Add Item'></form>";
                 ?>
 

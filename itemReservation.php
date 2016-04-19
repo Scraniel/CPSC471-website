@@ -109,6 +109,7 @@ session_start()
                             <input type='hidden' name='name' value='$name'>
                             <input type='hidden' name='address' value='$address'>
                             <input type='hidden' name='action' value='reserve'>
+                            <input type='hidden' name='username' value='".$_SESSION["username"].">
                             <input type='submit' value='Reserve from this address'>
                         </form><br>";
                     }

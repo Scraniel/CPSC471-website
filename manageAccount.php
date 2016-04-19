@@ -81,6 +81,7 @@
                             <label class="login"> <span>Please enter new email or password:</span></br></br></span>
                             <input type="text" name="email" placeholder="New Email" id="username" /> </br></br>
                             <input type="password" name="password" placeholder="New Password" id="password" /> </br></br>
+                            <input type="hidden" name="username" value="<?php echo $_SESSION["username"]?>">
                             <input type="hidden" name="action" value="update">
                          <!--   <a href="#" class="btn" data-type="submit">Submit</a></label>-->
                               <button> Submit </button></label>
@@ -129,6 +130,7 @@
                             ?>
                         
                             Email notifications? <input type="checkbox" name="emailNotifications" value="true"><br>
+                            <input type='hidden' name='username' value='<?php echo $_SESSION["username"] ?>'>
                             <input type="hidden" name = "action" value="subscribe">
                             <input type="submit" value="Subscribe">
                             </form>
@@ -147,8 +149,8 @@
                             }
                             echo "</select><br>";
                             ?>
-                        
-                            
+
+                            <input type='hidden' name='username' value='<?php echo $_SESSION["username"] ?>'>
                             <input type="hidden" name = "action" value="unsubscribe">
                             <input type="submit" value="Unsubscribe">
                             </form>
@@ -165,6 +167,7 @@
                             <label class="login"> <span>Please enter new email or password:</span></br></br></span>
                             <input type="text" name="email" placeholder="New Email" id="username" /> </br></br>
                             <input type="password" name="password" placeholder="New Password" id="password" /> </br></br>
+                            <input type='hidden' name='name' value='<?php echo $_SESSION["storename"] ?>'>
                             <input type="hidden" name="action" value="update">
                          <!--   <a href="#" class="btn" data-type="submit">Submit</a></label>-->
                             <button>Submit</button></label>
@@ -210,6 +213,7 @@
                                 Open Time: <input type="time" name="open_hours" value="00:00:00"><br>
                                 Closed Time: <input type="time" name="closed_hours" value="00:00:00"><br>
                                 <input type="hidden" name = "action" value="add">
+                                <input type="hidden" name="name" value="<?php echo $_SESSION["storename"]?>">
                                 <input type="submit" value="Add Location">
                             </form>
 
@@ -236,6 +240,7 @@
                                 New Phone: <input type="number" name="phone"><br>
                                 New Open Time: <input type="time" name="open_hours" ><br>
                                 New Closed Time: <input type="time" name="closed_hours" ><br>
+                                <input type="hidden" name="name" value="<?php echo $_SESSION["storename"]?>">
                                 <input type="hidden" name = "action" value="update">
                                 <input type="submit" value="Update Location">
                             </form>
@@ -260,6 +265,7 @@
                                 echo "</select><br>";
                                 ?>
                                 <input type="hidden" name = "action" value="delete">
+                                <input type="hidden" name="name" value="<?php echo $_SESSION["storename"]?>">
                                 <input type="submit" value="Remove Location">
                             </form>
                     <?php

@@ -104,6 +104,7 @@ session_start()
                 <input type='hidden' name='name' value='$name'>
                 <input type='hidden' name='address' value='$address'>
                 <input type='hidden' name='action' value='cancelReservation'>
+                <input type='hidden' name='username' value='".$_SESSION["username"]."'>
                 <input type='submit' value='Cancel Reservation'></form>";
 
                 echo "<br>";
