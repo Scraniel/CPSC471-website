@@ -2,7 +2,6 @@
 <?php
 // Start the session
     session_start();
-    //$_SESSION['username'] = "penis";
     
     
     if(!isset($_SESSION["username"]))

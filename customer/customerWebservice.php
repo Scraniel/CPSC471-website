@@ -53,7 +53,7 @@ else if($_POST["action"] == "add")
 else if($_POST["action"] == "update")
 {
     $updating = array();
-    $username = $_SESSION["username"];
+    $username = $_POST["username"];
 
     if(!empty($_POST["email"]))
         $updating["email"] =  $_POST["email"];
@@ -72,8 +72,8 @@ else if($_POST["action"] == "update")
 }
 else if($_POST["action"] == "subscribe")
 {
-    //$username = $_POST["username"];
-    $username = $_SESSION["username"];
+    $username = $_POST["username"];
+
     $name = $_POST["name"];
     $emailNotifications = !empty($_POST["emailNotifications"]) ? true : false;
     //$emailNotifications = true;
@@ -92,8 +92,7 @@ else if($_POST["action"] == "subscribe")
 }
 else if($_POST["action"] == "unsubscribe")
 {
-    //$username = $_POST["username"];
-    $username = $_SESSION["username"];
+    $username = $_POST["username"];
     $name = $_POST["name"];
 
     if(deleteSubscription($con, $username, $name))
@@ -123,8 +122,7 @@ else if($_POST["action"] == "toggleNotifications")
 }
 else if($_POST["action"] == "reserve")
 {
-    //$username = $_POST["username"];
-    $username = $_SESSION["username"];
+    $username = $_POST["username"];
     $id = $_POST["id"];
     $address = $_POST["address"];
     $name = $_POST["name"];
@@ -143,8 +141,8 @@ else if($_POST["action"] == "reserve")
 }
 else if($_POST["action"] == "cancelReservation")
 {
-    //$username = $_POST["username"];
-    $username = $_SESSION["username"];
+    $username = $_POST["username"];
+
     $id = $_POST["id"];
     $address = $_POST["address"];
     $name = $_POST["name"];

@@ -115,6 +115,7 @@
                 New price: $<input type='number' name='price' min='0' max='9999' step='0.01' size='4'><br>
                 <input type='hidden' name='address' value='$address'>
                 <input type='hidden' name='action' value='updateItems'>
+                <input type='hidden' name='name' value='".$_SESSION["storename"]."'>
                 <input type='submit' value='Update'></form>";
             }
             ?>
@@ -146,6 +147,7 @@
                 }
                 echo "</select><br>
                 <input type='hidden' name='address' value='$address'>
+                <input type='hidden' name='name' value='".$_SESSION["storename"]."'>
                 <input type='hidden' name='action' value='deleteItems'>
                 <input type='submit' value='Delete'></form>";
             }

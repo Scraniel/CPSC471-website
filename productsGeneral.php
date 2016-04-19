@@ -101,33 +101,53 @@
             include 'utility/utilityFunctions.php';
 
             $qualifications = "";
+            $sort = null;
             if(!empty($_GET['sort'])) {
-                switch ($_GET['sort'])
+                $sort = $_GET['sort'];
+                switch ($sort)
                 {
                     case 'a':
                         $qualifications = 'ORDER BY name';
                         break;
                     case 'c':
-                        // TODO: query for categories of this item, then sort by them
+                        $qualifications = 'NATURAL JOIN CATEGORY ORDER BY category';
                         break;
-                    case 's':
-                        // TODO: query for stores that have this item, then sort by them
-                        break;
-
-                    // TODO: May need to change the printing to accommodate for the same item in multiple categories / stores
                 }
 
             }
 
-            $rows = getTable($con, 'ITEM', $qualifications);
+            if($sort == 's')
+                $rows = getStoreItems($con);
+            else
+                $rows = getTable($con, 'ITEM', $qualifications);
+
+            $currentHeading = null;
             foreach ($rows as $row) {
+                if($sort == 'c')
+                {
+                    if($row['category'] != $currentHeading)
+                    {
+                        $currentHeading = $row['category'];
+                        echo "<div class='grid_12'><h4>".$currentHeading."</h4></div>";
+                    }
+                }
+                elseif($sort == 's')
+                {
+                    if($row['sname'] != $currentHeading)
+                    {
+                        $currentHeading = $row['sname'];
+                        echo "<div class='grid_12'><h4>".$currentHeading."</h4></div>";
+                    }
+                }
+
                 $id = $row['id'];
                 $imagePath = 'item/uploads/'.$row['picture'];
                 $name = $row['name'];
                 $description = $row['description'];
+                $made_in = $row['made_in'];
                 echo "<div class='grid_5'> <img src='$imagePath' alt='' class='img_inner fleft' style='width:304px;height:228px;'>
                 <div class='extra_wrapper'>
-                    <p class='col1'>$name</p>
+                    <p class='col1'><b>$name</b><br>Made in: $made_in</p>
                     $description<br>";
                     if(isset($_SESSION["username"]))
                     {

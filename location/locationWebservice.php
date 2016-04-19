@@ -10,8 +10,7 @@ include 'modifyLocation.php';
 if($_POST["action"] == "add")
 {
     $address = $_POST["address"];
-    //$name = $_POST["name"];
-    $name = $_SESSION["storename"];
+    $name = $_POST["name"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
     $open_hours = $_POST["open_hours"];
@@ -32,8 +31,7 @@ if($_POST["action"] == "add")
  */
 else if($_POST["action"] == "delete")
 {
-    //$name = $_POST["name"];
-    $name = $_SESSION["storename"];
+    $name = $_POST["name"];
     $address = $_POST["address"];
     if(deleteLocation($con, $name, $address))
     {
@@ -52,8 +50,7 @@ else if($_POST["action"] == "delete")
 else if($_POST["action"] == "update")
 {
     $updating = array();
-    //$name = $_POST["name"];
-    $name = $_SESSION["storename"];
+    $name = $_POST["name"];
     $address = $_POST["address"];
 
     if(!empty($_POST["email"]))

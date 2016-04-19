@@ -49,8 +49,7 @@ else if($_POST["action"] == "add")
 else if($_POST["action"] == "update")
 {
     $updating = array();
-    //$name = $_POST["name"];
-    $name = $_SESSION["storename"];
+    $name = $_POST["name"];
 
     if(!empty($_POST["email"]))
         $updating["email"] =  $_POST["email"];
@@ -69,8 +68,7 @@ else if($_POST["action"] == "update")
 }
 else if($_POST["action"] == "items")
 {
-    //$name = $_POST["name"];
-    $name = $_SESSION["storename"];
+    $name = $_POST["name"];
     $address = $_POST["address"];
     $id = $_POST["id"];
     $num_in_stock = $_POST["num_in_stock"];
@@ -92,8 +90,7 @@ else if($_POST["action"] == "updateItems")
     $updating = array();
     $id = $_POST["id"];
     $address = $_POST["address"];
-    //$name = $_POST["name"];
-    $name = $_SESSION["storename"];
+    $name = $_POST["name"];
 
     if(!empty($_POST["num_in_stock"]))
         $updating["num_in_stock"] = $_POST["num_in_stock"];
@@ -111,7 +108,7 @@ else if($_POST["action"] == "updateItems")
 }
 else if($_POST["action"] == "deleteItems")
 {
-    $name = $_SESSION["storename"];
+    $name = $_POST["name"];
     $address = $_POST["address"];
     $id = $_POST["id"];
     
