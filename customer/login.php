@@ -30,7 +30,7 @@ else if($_POST["action"] == "store")
     $password = $_POST['password'];
 
     $sqlStore = "SELECT *
-          FROM store 
+          FROM STORE 
           WHERE (name='$username') AND (password ='$password');";
 
     $resultStore = mysqli_query($con, $sqlStore);
