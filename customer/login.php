@@ -17,7 +17,7 @@ if($_POST["action"] == "customer")
     $password = stripslashes($password);
 
     $sql = "SELECT *
-          FROM customer 
+          FROM CUSTOMER 
           WHERE (username='$username') AND (password ='$password');";
 
     $result = mysqli_query($con,$sql);
